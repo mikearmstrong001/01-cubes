@@ -48,6 +48,11 @@ public:
 	void AddKeyValueFloatArray( const char *k, float *v, int num );
 	void AddKeyValueInt( const char *k, int v );
 
+	void AddKeyValueString( const Guid &g, const char *v );
+	void AddKeyValueFloat( const Guid &g, float v );
+	void AddKeyValueFloatArray( const Guid &g, float *v, int num );
+	void AddKeyValueInt( const Guid &g, int v );
+
 	const char *GetKeyValueString( const char *k, const char *def = "" ) const;
 	float GetKeyValueFloat( const char *k, float def = 0.f ) const;
 	void GetKeyValueFloatArray( float *out, int num, const char *k ) const;
@@ -56,4 +61,6 @@ public:
 	bool HasKey( const char *k ) const;
 
 	void Dump( std::string &output ) const;
+
+	void MergeInto( KVStore const &other );
 };

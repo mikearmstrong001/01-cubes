@@ -16,7 +16,11 @@ public:
 
 class EntityDefMgr : public TypedDefMgr<EntityDef>
 {
+
 public:
+
+	virtual bool LoadGroup( const char *filename );
 };
 
 EntityDefMgr *EntityDefManager();
+

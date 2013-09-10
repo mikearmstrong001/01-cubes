@@ -1,0 +1,1626 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug Win32 DLL DCRT|Win32">
+      <Configuration>Debug Win32 DLL DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win32 DLL DCRT|x64">
+      <Configuration>Debug Win32 DLL DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win32 DLL DCRT|ORBIS">
+      <Configuration>Debug Win32 DLL DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win32 Static DCRT|Win32">
+      <Configuration>Debug Win32 Static DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win32 Static DCRT|x64">
+      <Configuration>Debug Win32 Static DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win32 Static DCRT|ORBIS">
+      <Configuration>Debug Win32 Static DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win32 Static SCRT|Win32">
+      <Configuration>Debug Win32 Static SCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win32 Static SCRT|x64">
+      <Configuration>Debug Win32 Static SCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win32 Static SCRT|ORBIS">
+      <Configuration>Debug Win32 Static SCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win64 DLL DCRT|Win32">
+      <Configuration>Debug Win64 DLL DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win64 DLL DCRT|x64">
+      <Configuration>Debug Win64 DLL DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win64 DLL DCRT|ORBIS">
+      <Configuration>Debug Win64 DLL DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win64 Static DCRT|Win32">
+      <Configuration>Debug Win64 Static DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win64 Static DCRT|x64">
+      <Configuration>Debug Win64 Static DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win64 Static DCRT|ORBIS">
+      <Configuration>Debug Win64 Static DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win64 Static SCRT|Win32">
+      <Configuration>Debug Win64 Static SCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win64 Static SCRT|x64">
+      <Configuration>Debug Win64 Static SCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Win64 Static SCRT|ORBIS">
+      <Configuration>Debug Win64 Static SCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Orbis Clang|Win32">
+      <Configuration>Debug Orbis Clang</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Orbis Clang|x64">
+      <Configuration>Debug Orbis Clang</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Orbis Clang|ORBIS">
+      <Configuration>Debug Orbis Clang</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win32 DLL DCRT|Win32">
+      <Configuration>Development Win32 DLL DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win32 DLL DCRT|x64">
+      <Configuration>Development Win32 DLL DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win32 DLL DCRT|ORBIS">
+      <Configuration>Development Win32 DLL DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win32 Static DCRT|Win32">
+      <Configuration>Development Win32 Static DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win32 Static DCRT|x64">
+      <Configuration>Development Win32 Static DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win32 Static DCRT|ORBIS">
+      <Configuration>Development Win32 Static DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win32 Static SCRT|Win32">
+      <Configuration>Development Win32 Static SCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win32 Static SCRT|x64">
+      <Configuration>Development Win32 Static SCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win32 Static SCRT|ORBIS">
+      <Configuration>Development Win32 Static SCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win64 DLL DCRT|Win32">
+      <Configuration>Development Win64 DLL DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win64 DLL DCRT|x64">
+      <Configuration>Development Win64 DLL DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win64 DLL DCRT|ORBIS">
+      <Configuration>Development Win64 DLL DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win64 Static DCRT|Win32">
+      <Configuration>Development Win64 Static DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win64 Static DCRT|x64">
+      <Configuration>Development Win64 Static DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win64 Static DCRT|ORBIS">
+      <Configuration>Development Win64 Static DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win64 Static SCRT|Win32">
+      <Configuration>Development Win64 Static SCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win64 Static SCRT|x64">
+      <Configuration>Development Win64 Static SCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Win64 Static SCRT|ORBIS">
+      <Configuration>Development Win64 Static SCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Orbis Clang|Win32">
+      <Configuration>Development Orbis Clang</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Orbis Clang|x64">
+      <Configuration>Development Orbis Clang</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Development Orbis Clang|ORBIS">
+      <Configuration>Development Orbis Clang</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win32 DLL DCRT|Win32">
+      <Configuration>Profile Win32 DLL DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win32 DLL DCRT|x64">
+      <Configuration>Profile Win32 DLL DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win32 DLL DCRT|ORBIS">
+      <Configuration>Profile Win32 DLL DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win32 Static DCRT|Win32">
+      <Configuration>Profile Win32 Static DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win32 Static DCRT|x64">
+      <Configuration>Profile Win32 Static DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win32 Static DCRT|ORBIS">
+      <Configuration>Profile Win32 Static DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win32 Static SCRT|Win32">
+      <Configuration>Profile Win32 Static SCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win32 Static SCRT|x64">
+      <Configuration>Profile Win32 Static SCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win32 Static SCRT|ORBIS">
+      <Configuration>Profile Win32 Static SCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win64 DLL DCRT|Win32">
+      <Configuration>Profile Win64 DLL DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win64 DLL DCRT|x64">
+      <Configuration>Profile Win64 DLL DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win64 DLL DCRT|ORBIS">
+      <Configuration>Profile Win64 DLL DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win64 Static DCRT|Win32">
+      <Configuration>Profile Win64 Static DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win64 Static DCRT|x64">
+      <Configuration>Profile Win64 Static DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win64 Static DCRT|ORBIS">
+      <Configuration>Profile Win64 Static DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win64 Static SCRT|Win32">
+      <Configuration>Profile Win64 Static SCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win64 Static SCRT|x64">
+      <Configuration>Profile Win64 Static SCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Win64 Static SCRT|ORBIS">
+      <Configuration>Profile Win64 Static SCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Orbis Clang|Win32">
+      <Configuration>Profile Orbis Clang</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Orbis Clang|x64">
+      <Configuration>Profile Orbis Clang</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile Orbis Clang|ORBIS">
+      <Configuration>Profile Orbis Clang</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win32 DLL DCRT|Win32">
+      <Configuration>Release Win32 DLL DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win32 DLL DCRT|x64">
+      <Configuration>Release Win32 DLL DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win32 DLL DCRT|ORBIS">
+      <Configuration>Release Win32 DLL DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win32 Static DCRT|Win32">
+      <Configuration>Release Win32 Static DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win32 Static DCRT|x64">
+      <Configuration>Release Win32 Static DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win32 Static DCRT|ORBIS">
+      <Configuration>Release Win32 Static DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win32 Static SCRT|Win32">
+      <Configuration>Release Win32 Static SCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win32 Static SCRT|x64">
+      <Configuration>Release Win32 Static SCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win32 Static SCRT|ORBIS">
+      <Configuration>Release Win32 Static SCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win64 DLL DCRT|Win32">
+      <Configuration>Release Win64 DLL DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win64 DLL DCRT|x64">
+      <Configuration>Release Win64 DLL DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win64 DLL DCRT|ORBIS">
+      <Configuration>Release Win64 DLL DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win64 Static DCRT|Win32">
+      <Configuration>Release Win64 Static DCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win64 Static DCRT|x64">
+      <Configuration>Release Win64 Static DCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win64 Static DCRT|ORBIS">
+      <Configuration>Release Win64 Static DCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win64 Static SCRT|Win32">
+      <Configuration>Release Win64 Static SCRT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win64 Static SCRT|x64">
+      <Configuration>Release Win64 Static SCRT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Win64 Static SCRT|ORBIS">
+      <Configuration>Release Win64 Static SCRT</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Orbis Clang|Win32">
+      <Configuration>Release Orbis Clang</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Orbis Clang|x64">
+      <Configuration>Release Orbis Clang</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Orbis Clang|ORBIS">
+      <Configuration>Release Orbis Clang</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{99189624-54C8-4347-A0F6-4DBB7104C3F8}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>cubes</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win32 DLL DCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win32 Static DCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win32 Static SCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win64 DLL DCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win64 Static DCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win64 Static SCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Orbis Clang|ORBIS'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>Clang</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win32 DLL DCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win32 Static DCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win32 Static SCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win64 DLL DCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win64 Static DCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win64 Static SCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Orbis Clang|ORBIS'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>Clang</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win32 DLL DCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win32 Static DCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win32 Static SCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win64 DLL DCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win64 Static DCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win64 Static SCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Orbis Clang|ORBIS'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>Clang</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win32 DLL DCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win32 Static DCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win32 Static SCRT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win64 DLL DCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win64 Static DCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win64 Static SCRT|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Orbis Clang|ORBIS'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>Clang</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Win32 DLL DCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Win32 Static DCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Win32 Static SCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Win64 DLL DCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Win64 Static DCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Win64 Static SCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Orbis Clang|ORBIS'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Development Win32 DLL DCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Development Win32 Static DCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Development Win32 Static SCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Development Win64 DLL DCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Development Win64 Static DCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Development Win64 Static SCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Development Orbis Clang|ORBIS'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Profile Win32 DLL DCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Profile Win32 Static DCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Profile Win32 Static SCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Profile Win64 DLL DCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Profile Win64 Static DCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Profile Win64 Static SCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Profile Orbis Clang|ORBIS'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Win32 DLL DCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Win32 Static DCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Win32 Static SCRT|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Win64 DLL DCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Win64 Static DCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Win64 Static SCRT|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Orbis Clang|ORBIS'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win32 DLL DCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_dll_dcrt_vc100_debug\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_dll_dcrt_vc100_debug\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win32 Static DCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_static_dcrt_vc100_debug\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_static_dcrt_vc100_debug\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win32 Static SCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_static_scrt_vc100_debug\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_static_scrt_vc100_debug\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win64 DLL DCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_dll_dcrt_vc100_debug\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_dll_dcrt_vc100_debug\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win64 Static DCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_static_dcrt_vc100_debug\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_static_dcrt_vc100_debug\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win64 Static SCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_static_scrt_vc100_debug\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_static_scrt_vc100_debug\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Orbis Clang|ORBIS'">
+    <OutDir>..\..\..\..\..\wws_sdk\bin\orbis_clang_debug\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\orbis_clang_debug\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.elf</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win32 DLL DCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_dll_dcrt_vc100_development\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_dll_dcrt_vc100_development\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win32 Static DCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_static_dcrt_vc100_development\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_static_dcrt_vc100_development\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win32 Static SCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_static_scrt_vc100_development\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_static_scrt_vc100_development\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win64 DLL DCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_dll_dcrt_vc100_development\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_dll_dcrt_vc100_development\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win64 Static DCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_static_dcrt_vc100_development\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_static_dcrt_vc100_development\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Win64 Static SCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_static_scrt_vc100_development\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_static_scrt_vc100_development\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development Orbis Clang|ORBIS'">
+    <OutDir>..\..\..\..\..\wws_sdk\bin\orbis_clang_development\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\orbis_clang_development\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.elf</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win32 DLL DCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_dll_dcrt_vc100_profile\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_dll_dcrt_vc100_profile\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win32 Static DCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_static_dcrt_vc100_profile\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_static_dcrt_vc100_profile\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win32 Static SCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_static_scrt_vc100_profile\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_static_scrt_vc100_profile\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win64 DLL DCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_dll_dcrt_vc100_profile\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_dll_dcrt_vc100_profile\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win64 Static DCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_static_dcrt_vc100_profile\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_static_dcrt_vc100_profile\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win64 Static SCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_static_scrt_vc100_profile\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_static_scrt_vc100_profile\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile Orbis Clang|ORBIS'">
+    <OutDir>..\..\..\..\..\wws_sdk\bin\orbis_clang_profile\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\orbis_clang_profile\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.elf</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win32 DLL DCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_dll_dcrt_vc100_release\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_dll_dcrt_vc100_release\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win32 Static DCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_static_dcrt_vc100_release\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_static_dcrt_vc100_release\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win32 Static SCRT|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win32_static_scrt_vc100_release\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win32_static_scrt_vc100_release\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win64 DLL DCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_dll_dcrt_vc100_release\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_dll_dcrt_vc100_release\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win64 Static DCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_static_dcrt_vc100_release\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_static_dcrt_vc100_release\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win64 Static SCRT|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\..\wws_sdk\bin\win64_static_scrt_vc100_release\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\win64_static_scrt_vc100_release\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Orbis Clang|ORBIS'">
+    <OutDir>..\..\..\..\..\wws_sdk\bin\orbis_clang_release\</OutDir>
+    <IntDir>..\..\..\..\..\wws_sdk\tmp\orbis_clang_release\cubes\</IntDir>
+    <TargetName>cubes</TargetName>
+    <TargetExt>.elf</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win32 DLL DCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_dll_dcrt_vc100_debug\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_dll_dcrt_vc100_debug\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win32 Static DCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_static_dcrt_vc100_debug\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_static_dcrt_vc100_debug\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <PostBuildEvent>
+      <Command>shaders.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win32 Static SCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_static_scrt_vc100_debug\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_static_scrt_vc100_debug\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win64 DLL DCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_dll_dcrt_vc100_debug\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_dll_dcrt_vc100_debug\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win64 Static DCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_static_dcrt_vc100_debug\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_static_dcrt_vc100_debug\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win64 Static SCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_static_scrt_vc100_debug\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_static_scrt_vc100_debug\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Orbis Clang|ORBIS'">
+    <ClCompile>
+      <ExtraWarnings>true</ExtraWarnings>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;WWS_BUILD_DEBUG;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OptimizationLevel>Level0</OptimizationLevel>
+      <NoStrictAliasing>false</NoStrictAliasing>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>-Wstrict-aliasing=2 -Wundef -Wshadow %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\orbis_clang_debug\libwws_bgfx.a;..\..\..\..\..\wws_sdk\lib\orbis_clang_debug\libcommon.a;-lSceNet_stub_weak;-lScePosix_stub_weak;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development Win32 DLL DCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_dll_dcrt_vc100_development\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_dll_dcrt_vc100_development\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development Win32 Static DCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_static_dcrt_vc100_development\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_static_dcrt_vc100_development\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development Win32 Static SCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_static_scrt_vc100_development\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_static_scrt_vc100_development\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development Win64 DLL DCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_dll_dcrt_vc100_development\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_dll_dcrt_vc100_development\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development Win64 Static DCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_static_dcrt_vc100_development\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_static_dcrt_vc100_development\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development Win64 Static SCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_static_scrt_vc100_development\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_static_scrt_vc100_development\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development Orbis Clang|ORBIS'">
+    <ClCompile>
+      <ExtraWarnings>true</ExtraWarnings>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_DEVELOPMENT;WWS_ASSERTS_ENABLED=1;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDebug;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OptimizationLevel>Level2</OptimizationLevel>
+      <NoStrictAliasing>false</NoStrictAliasing>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>-Wstrict-aliasing=2 -Wundef -Wshadow %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\orbis_clang_development\libwws_bgfx.a;..\..\..\..\..\wws_sdk\lib\orbis_clang_development\libcommon.a;-lSceNet_stub_weak;-lScePosix_stub_weak;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win32 DLL DCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_dll_dcrt_vc100_profile\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_dll_dcrt_vc100_profile\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win32 Static DCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_static_dcrt_vc100_profile\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_static_dcrt_vc100_profile\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win32 Static SCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_static_scrt_vc100_profile\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_static_scrt_vc100_profile\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win64 DLL DCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_dll_dcrt_vc100_profile\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_dll_dcrt_vc100_profile\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win64 Static DCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_static_dcrt_vc100_profile\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_static_dcrt_vc100_profile\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile Win64 Static SCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_static_scrt_vc100_profile\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_static_scrt_vc100_profile\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile Orbis Clang|ORBIS'">
+    <ClCompile>
+      <ExtraWarnings>true</ExtraWarnings>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_PROFILE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OptimizationLevel>Level2</OptimizationLevel>
+      <NoStrictAliasing>false</NoStrictAliasing>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>-Wstrict-aliasing=2 -Wundef -Wshadow %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\orbis_clang_profile\libwws_bgfx.a;..\..\..\..\..\wws_sdk\lib\orbis_clang_profile\libcommon.a;-lSceNet_stub_weak;-lScePosix_stub_weak;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Win32 DLL DCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_dll_dcrt_vc100_release\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_dll_dcrt_vc100_release\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Win32 Static DCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_static_dcrt_vc100_release\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_static_dcrt_vc100_release\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Win32 Static SCRT|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win32_static_scrt_vc100_release\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win32_static_scrt_vc100_release\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Win64 DLL DCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;WWS_TARGET_LINK_DYNAMIC;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_dll_dcrt_vc100_release\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_dll_dcrt_vc100_release\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Win64 Static DCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_static_dcrt_vc100_release\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_static_dcrt_vc100_release\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Win64 Static SCRT|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/wd4267 /wd4511 /wd4512 /wd4702 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;WIN32;_WIN32;_WINDOWS;_MBCS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN64;_WIN64;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\win64_static_scrt_vc100_release\libwws_bgfx.lib;..\..\..\..\..\wws_sdk\lib\win64_static_scrt_vc100_release\libcommon.lib;psapi.lib;dbghelp.lib;shlwapi.lib;shell32.lib;advapi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Orbis Clang|ORBIS'">
+    <ClCompile>
+      <ExtraWarnings>true</ExtraWarnings>
+      <PreprocessorDefinitions>NDEBUG;WWS_BUILD_RELEASE;WWS_ASSERTS_ENABLED=0;WWS_MINIMUM_LOG_LEVEL_COMPILE_TIME=kWwsLogDisable;ATGTOOLS_NO_PRAGMA_COMMENT_LIB;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\wws_sdk\components;..\..\include;..\..\3rdparty\openal\include;..\..\..\bx\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OptimizationLevel>Level2</OptimizationLevel>
+      <NoStrictAliasing>false</NoStrictAliasing>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>-Wstrict-aliasing=2 -Wundef -Wshadow %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\..\..\wws_sdk\lib\orbis_clang_release\libwws_bgfx.a;..\..\..\..\..\wws_sdk\lib\orbis_clang_release\libcommon.a;-lSceNet_stub_weak;-lScePosix_stub_weak;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="anim.cpp" />
+    <ClCompile Include="animal.cpp" />
+    <ClCompile Include="audio.cpp" />
+    <ClCompile Include="cub.cpp" />
+    <ClCompile Include="cubes.cpp">
+    </ClCompile>
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="entitydef.cpp" />
+    <ClCompile Include="kv6.cpp" />
+    <ClCompile Include="kvstore.cpp" />
+    <ClCompile Include="level.cpp" />
+    <ClCompile Include="mesh.cpp" />
+    <ClCompile Include="actor.cpp" />
+    <ClCompile Include="misc.cpp" />
+    <ClCompile Include="particle.cpp" />
+    <ClCompile Include="pickup.cpp" />
+    <ClCompile Include="player.cpp" />
+    <ClCompile Include="scenery.cpp" />
+    <ClCompile Include="spawners.cpp" />
+    <ClCompile Include="voxel.cpp" />
+    <ClCompile Include="vxl.cpp" />
+    <ClCompile Include="world.cpp" />
+    <ClCompile Include="zombie.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\wws_bgfx.vcxproj">
+      <Project>{BF567C7A-608B-11E2-B87C-18AA6188709B}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\common\common.vcxproj">
+      <Project>{BF567C7A-608B-11E2-B87C-18AA6188709C}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="anim.h" />
+    <ClInclude Include="animal.h" />
+    <ClInclude Include="cub.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="entitydef.h" />
+    <ClInclude Include="kv6.h" />
+    <ClInclude Include="kvstore.h" />
+    <ClInclude Include="level.h" />
+    <ClInclude Include="mesh.h" />
+    <ClInclude Include="actor.h" />
+    <ClInclude Include="misc.h" />
+    <ClInclude Include="particle.h" />
+    <ClInclude Include="pickup.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="scenery.h" />
+    <ClInclude Include="spawners.h" />
+    <ClInclude Include="voxel.h" />
+    <ClInclude Include="vxl.h" />
+    <ClInclude Include="world.h" />
+    <ClInclude Include="zombie.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fs_cubes.sc" />
+  </ItemGroup>
+  <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

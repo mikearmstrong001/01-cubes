@@ -3,6 +3,9 @@
 #include "fpumath.h"
 #include "kvstore.h"
 
+CoreType Actor::s_Type( &Actor::Super::s_Type );
+
+
 void Actor::PreDeltaUpdate( float dt )
 {
 	unlinkFromMap( m_level->GetMap(), this, m_pos );
@@ -77,7 +80,6 @@ void Actor::OnRemoveFromLevel( Level *l )
 void Actor::Spawn( KVStore const &kv )
 {
 	Super::Spawn( kv );
-	kv.GetKeyValueFloatArray( m_pos, 3, "pos" );
 	m_rotz = kv.GetKeyValueFloat( "rotz" );
 }
 

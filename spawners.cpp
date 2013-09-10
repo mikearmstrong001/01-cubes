@@ -1,6 +1,10 @@
 #include "spawners.h"
 #include "level.h"
 
+static ClassCreator<Spawner> s_SpawnerCreator( "Spawner" );
+CoreType Spawner::s_Type( &Spawner::Super::s_Type );
+
+
 void Spawner::OnAddToLevel( Level *l )
 {
 	Super::OnAddToLevel( l );

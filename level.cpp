@@ -4,6 +4,7 @@
 #include "entitydef.h"
 #include "vxl.h"
 #include "kvstore.h"
+#include "fpumath.h"
 
 struct sceneryobject_s
 {
@@ -128,11 +129,12 @@ bool Level::Load( const char * filename )
 	std::vector< sceneryobject_s > scenery;
 	load_scenery( scenery, def->GetKeyValueString( "scenery" ) );
 
-	const EntsDef *ents = EntsDefManager()->Get( def->GetKeyValueString( "ents" ) );
+	const LevelEntsDef *ents = LevelEntsDefManager()->Get( def->GetKeyValueString( "ents" ) );
 
 	for ( unsigned int i=0; i<ents->GetNum(); i++ )
 	{
 		KVStore const &ent = ents->Get( i );
+
 		Entity *s = (Entity *)CoreClassCreator::Create( ent.GetKeyValueString( "classname" ) );
 		s->Spawn( ent );
 		s->OnAddToLevel( this );
@@ -225,6 +227,10 @@ void Level::Clear()
 	m_renderUpdate.clear();
 }
 
+void Level::UpdateBegin()
+{
+}
+
 void Level::UpdateFixed( float dt )
 {
 	UpdateContainer::iterator b = m_fixedUpdate.begin();
@@ -258,6 +264,22 @@ void Level::UpdateGUI()
 	}
 }
 
+void Level::UpdateEnd()
+{
+	RemoveContainer::iterator b = m_toRemove.begin();
+	while ( b != m_toRemove.end() )
+	{
+		Entity *ent = *b;
+		ent->OnRemoveFromLevel( this );
+		EntityContainer::iterator f = std::find( m_entities.begin(), m_entities.end(), ent );
+		if ( f != m_entities.end() )
+		{
+			m_entities.erase( f );
+		}
+		b++;
+	}
+	m_toRemove.clear();
+}
 
 void Level::Render()
 {
@@ -273,6 +295,17 @@ void Level::Render()
 	}
 }
 
+void Level::AddEntity( Entity *ent )
+{
+	m_entities.push_back( ent );
+	ent->OnAddToLevel( this );
+}
+
+void Level::RemoveEntity( Entity *ent )
+{
+	m_toRemove.push_back( ent );
+}
+
 Entity *Level::FindEntity( const char *name )
 {
 	for ( unsigned int i=0; i<m_entities.size(); i++)
@@ -284,6 +317,24 @@ Entity *Level::FindEntity( const char *name )
 	}
 	return NULL;
 }
+
+void Level::FindEntities( std::vector<Entity*> &ents, const float pos[3], float radius, CoreType const &type )
+{
+	for ( unsigned int i=0; i<m_entities.size(); i++)
+	{
+		Entity *e = m_entities[i];
+		if ( IsTypeOf( e->Type(), &type ) )
+		{
+			const float *epos = e->GetPos();
+			float distSq = vec3DistSq( pos, epos );
+			if ( distSq < (radius *radius ) )
+			{
+				ents.push_back( e );
+			}
+		}
+	}
+}
+
 
 static void ParseEnt( KVStore &kv, const char *&cursor )
 {
@@ -299,9 +350,16 @@ static void ParseEnt( KVStore &kv, const char *&cursor )
 
 		ParseToken( token, cursor );
 	}
+
+	const char *templatename = kv.GetKeyValueString( "template", NULL );
+	if ( templatename )
+	{
+		const EntityDef *edef = EntityDefManager()->Get( templatename, false );
+		kv.MergeInto( *edef );
+	}
 }
 
-bool EntsDef::Load( const char *filename )
+bool LevelEntsDef::Load( const char *filename )
 {
 	m_filename = filename;
 	char* ents = (char*)fload(m_filename.c_str());
@@ -323,13 +381,13 @@ bool EntsDef::Load( const char *filename )
 	return true;
 }
 
-void EntsDef::Reload()
+void LevelEntsDef::Reload()
 {
 	Clear();
 	Load( m_filename.c_str() );
 }
 
-void EntsDef::Clear()
+void LevelEntsDef::Clear()
 {
 	for (unsigned int i=0; i<m_ents.size(); i++)
 		delete m_ents[i];
@@ -337,8 +395,8 @@ void EntsDef::Clear()
 }
 
 
-EntsDefMgr *EntsDefManager()
+LevelEntsDefMgr *LevelEntsDefManager()
 {
-	static EntsDefMgr s_mgr;
+	static LevelEntsDefMgr s_mgr;
 	return &s_mgr;
 }

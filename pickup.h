@@ -2,9 +2,14 @@
 
 #include "entity.h"
 
-class Spawner : public Entity
+class Pickup : public Entity
 {
 	typedef Entity Super;
+	float m_rotz;
+	float m_rotRate;
+	float m_bounceZ;
+	float m_bounceZRate;
+	float m_bounceZDist;
 
 public:
 
@@ -12,6 +17,10 @@ public:
 	void OnRemoveFromLevel( Level *l );
 
 	void Spawn( KVStore const &kv );
+
+	void UpdateDelta( float dt );
+
+	bool Use( Entity *by );
 
 	static CoreType s_Type;
 	virtual CoreType const *Type() const { return &s_Type; }

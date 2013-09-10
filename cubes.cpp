@@ -310,6 +310,9 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 	uint32_t debug = BGFX_DEBUG_TEXT;
 	uint32_t reset = BGFX_RESET_VSYNC;
 
+	CoreType::InitClassTypes();
+
+
 	bgfx::init();
 	bgfx::reset(width, height, reset);
 
@@ -324,6 +327,7 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 		, 0
 		);
 
+	EntityDefManager()->LoadGroup( "entities.template" );
 	EntityDefManager()->Get( "level1.def" );
 
 	const bgfx::Memory *mapMem = load( "data/stbmap.vxl" );
@@ -358,69 +362,6 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 
 	float playerScale = 1.f/8.f;
 	float playerOffsetZ = 20.f * playerScale;
-#if 0
-	entities[0].animTime = 0.f;
-	entities[0].rotz = 0.f;
-	entities[0].weaponIndex = 0;
-	entities[0].pos[0] = 128.f;
-	entities[0].pos[1] = 256.f;
-	entities[0].pos[2] = 0.f;
-	entities[0].vel[0] = 0.f;
-	entities[0].vel[1] = 0.f;
-	entities[0].vel[2] = 0.f;
-	entities[0].deltaupdate = playerThink;
-	entities[0].voxelNext = NULL;
-	entities[0].collisionHeight = 5;
-	entities[0].collisionMask = 0x1;
-	entities[0].attach.ent = -1;
-	load_animmesh( entities[0].mesh, "dwarf.am", playerScale );
-
-	entities[1].animTime = 0.f;
-	entities[1].rotz = 0.f;
-	entities[1].weaponIndex = 0;
-	entities[1].pos[0] = 128.f;
-	entities[1].pos[1] = 256.f;
-	entities[1].pos[2] = 0.f;
-	entities[1].vel[0] = 0.f;
-	entities[1].vel[1] = 0.f;
-	entities[1].vel[2] = 0.f;
-	entities[1].deltaupdate = nothingThink;
-	entities[1].voxelNext = NULL;
-	entities[1].collisionHeight = 5;
-	entities[1].collisionMask = 0x1;
-	entities[1].attach.ent = 0;
-	entities[1].attach.name = "hand";
-	load_animmesh( entities[1].mesh, "sword.am", playerScale );
-
-
-	for (int i=2; i<50; i++)
-	{
-		entities[i].animTime = 0.f;
-		entities[i].rotz = (rand() % 100) / 7.f;
-		entities[i].weaponIndex = 0;
-		entities[i].pos[0] = (float)(rand() % 512);
-		entities[i].pos[1] = (float)(rand() % 512);
-		entities[i].pos[2] = 64.f;
-		entities[i].vel[0] = 0.f;
-		entities[i].vel[1] = 0.f;
-		entities[i].vel[2] = 0.f;
-		entities[i].deltaupdate = (rand() & 1) ? zombieThink : avoidThink;
-		entities[i].stateTime = 0.f;
-		entities[i].noProgress = 100.f;
-		entities[i].voxelNext = NULL;
-		entities[i].collisionHeight = 5;
-		entities[i].collisionMask = 0x2;
-		entities[i].attach.ent = -1;
-		if ( entities[i].deltaupdate == avoidThink )
-		{
-			load_animmesh( entities[i].mesh, rand() & 1 ? "sheep.am" :"wolf.am", playerScale );
-		}
-		else
-		{
-			load_animmesh( entities[i].mesh, "zombie.am", playerScale );
-		}
-	}
-#endif
 
 	const bgfx::Memory* mem;
 
@@ -494,7 +435,9 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 				);
 
 			float deltaDT = min( time, 6.f/60.f) ;
+			world.UpdateBegin();
 			world.UpdateDelta( deltaDT );
+			world.UpdateEnd();
 
 			error -= time;
 		

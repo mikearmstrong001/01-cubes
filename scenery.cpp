@@ -2,6 +2,7 @@
 #include "level.h"
 
 static ClassCreator<Scenery> s_PlayerCreator( "Scenery" );
+CoreType Scenery::s_Type( &Scenery::Super::s_Type );
 
 
 void Scenery::OnAddToLevel( Level *l )

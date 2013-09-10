@@ -3,7 +3,8 @@
 #include "level.h"
 #include "fpumath.h"
 
-static ClassCreator<Zombie> s_PlayerCreator( "Zombie" );
+static ClassCreator<Zombie> s_ZombieCreator( "Zombie" );
+CoreType Zombie::s_Type( &Zombie::Super::s_Type );
 
 void Zombie::OnAddToLevel( Level *l )
 {

@@ -3,8 +3,10 @@
 #include "level.h"
 #include "imgui\imgui.h"
 #include "misc.h"
+#include "pickup.h"
 
 static ClassCreator<Player> s_PlayerCreator( "Player" );
+CoreType Player::s_Type( &Player::Super::s_Type );
 
 void Player::OnAddToLevel( Level *l )
 {
@@ -139,6 +141,16 @@ void Player::UpdateDelta( float dt )
 	else
 	{
 		AnimUpdate( m_animDir != 0.f ? "walk" : "idle", dt );
+	}
+
+	std::vector<Entity*> pickups;
+	m_level->FindEntities( pickups, m_pos, 1.f, Pickup::s_Type );
+	for (unsigned int i=0; i<pickups.size(); i++)
+	{
+		if ( pickups[i]->Use( this ) )
+		{
+			m_level->RemoveEntity( pickups[i] );
+		}
 	}
 
 	move( m_pos, m_vel, m_level->GetMap() );

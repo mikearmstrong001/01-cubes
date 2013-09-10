@@ -28,6 +28,9 @@ class Level
 	UpdateContainer m_guiUpdate;
 	UpdateContainer m_renderUpdate;
 
+	typedef std::vector< Entity* > RemoveContainer;
+	RemoveContainer m_toRemove;
+
 public:
 
 	Level();
@@ -46,19 +49,26 @@ public:
 	bool Load( const char *filename );
 	void Clear();
 
+	void UpdateBegin();
 	void UpdateFixed( float dt );
 	void UpdateDelta( float dt );
 	void UpdateGUI();
+	void UpdateEnd();
 
 	void Render();
+
+	void AddEntity( Entity *ent );
+	void RemoveEntity( Entity *ent );
 
 	map_s* GetMap() { return &m_map; }
 
 	Entity *FindEntity( const char *name );
+
+	void FindEntities( std::vector<Entity*> &ents, const float pos[3], float radius, CoreType const &type );
 };
 
 
-class EntsDef
+class LevelEntsDef
 {
 	std::vector<KVStore*> m_ents;
 	std::string m_filename;
@@ -79,9 +89,9 @@ public:
 	}
 };
 
-class EntsDefMgr : public TypedDefMgr<EntsDef>
+class LevelEntsDefMgr : public TypedDefMgr<LevelEntsDef>
 {
 public:
 };
 
-EntsDefMgr *EntsDefManager();
+LevelEntsDefMgr *LevelEntsDefManager();

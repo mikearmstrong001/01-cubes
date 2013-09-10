@@ -18,9 +18,11 @@ public:
 	bool Load( const char *filename );
 	void Clear();
 
+	void UpdateBegin();
 	void UpdateFixed( float dt );
 	void UpdateDelta( float dt );
 	void UpdateGUI();
+	void UpdateEnd();
 
 	void Render();
 

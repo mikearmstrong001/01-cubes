@@ -5,6 +5,9 @@ CoreClassCreator *CoreClassCreator::s_root = NULL;
 CoreType *CoreType::s_root = NULL;
 CoreType *CoreType::s_base = NULL;
 
+CoreType CoreClass::s_Type( NULL );
+
+
 static int CalcCoreTypeRanges( CoreType *root, int start )
 {
 	int kidscount = 1;
@@ -22,16 +25,6 @@ static int CalcCoreTypeRanges( CoreType *root, int start )
 	return kidscount;
 }
 
-CoreType s_basey(NULL);
-CoreType s_childa(&s_basey);
-CoreType s_childb(&s_basey);
-CoreType s_childaa(&s_childa);
-CoreType s_childab(&s_childa);
-
-bool IsATypeOfB( CoreType const *a, CoreType const *b )
-{
-	return a->m_from >= b->m_from && a->m_to <= b->m_to;
-}
 
 
 void CoreType::InitClassTypes()
@@ -45,17 +38,10 @@ void CoreType::InitClassTypes()
 		c = c->m_next;
 	}
 	CalcCoreTypeRanges( s_base, 0 );
-	bool r0 = IsATypeOfB( &s_childab, &s_childa );
-	bool r1 = IsATypeOfB( &s_childa, &s_childab );
-	bool r2 = IsATypeOfB( &s_childab, &s_childb );
-	bool r3 = IsATypeOfB( &s_childaa, &s_childab );
-	bool r4 = IsATypeOfB( &s_childab, &s_childaa );
-	bool r5 = IsATypeOfB( &s_childab, &s_basey );
 }
 
 void GenerateGUID( Guid &g, const char *str )
 {
-	CoreType::InitClassTypes();
 	g = 0;
 	while ( *str )
 	{

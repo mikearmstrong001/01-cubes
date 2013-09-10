@@ -34,6 +34,13 @@ void World::Clear()
 	m_curLevel = -1;
 }
 
+void World::UpdateBegin()
+{
+	if ( m_curLevel == -1 )
+		return;
+
+	m_levels[m_curLevel]->UpdateBegin();
+}
 
 void World::UpdateFixed( float dt )
 {
@@ -59,6 +66,13 @@ void World::UpdateGUI()
 	m_levels[m_curLevel]->UpdateGUI();
 }
 
+void World::UpdateEnd()
+{
+	if ( m_curLevel == -1 )
+		return;
+
+	m_levels[m_curLevel]->UpdateEnd();
+}
 
 void World::Render()
 {

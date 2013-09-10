@@ -33,7 +33,7 @@ struct CoreType
 	static CoreType *s_root;
 	static CoreType *s_base;
 
-	CoreType( CoreType *parent ) : m_registered(false), m_from(-1), m_to(-1), m_parent(parent), m_sibling(NULL), m_child(NULL)
+	explicit CoreType( CoreType *parent ) : m_registered(false), m_from(-1), m_to(-1), m_parent(parent), m_sibling(NULL), m_child(NULL)
 	{
 		m_next = s_root;
 		s_root = this;
@@ -55,6 +55,20 @@ struct CoreType
 	static void InitClassTypes();
 };
 
+inline bool IsTypeOf( CoreType const *a, CoreType const *b )
+{
+	return a->m_from >= b->m_from && a->m_to <= b->m_to;
+}
+
+template <class A, class B>
+inline A *CoreCast( B *ptr )
+{
+	if ( &IsTypeOf( &B::s_Type, &A::s_Type ) )
+		return (A*)ptr;
+	return NULL;
+}
+
+
 class CoreClass
 {
 public:
@@ -73,6 +87,10 @@ public:
 	{
 		free( ptr );
 	}
+
+	static CoreType s_Type;
+	virtual CoreType const *Type() const { return &s_Type; }
+	virtual CoreType const *SuperType() const { return NULL; }
 };
 
 class CoreClassCreator

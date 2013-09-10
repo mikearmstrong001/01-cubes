@@ -65,12 +65,16 @@ void KVStore::Clear()
 	m_store.clear();
 }
 
-
 void KVStore::AddKeyValueString( const char *k, const char *v )
 {
 	Guid g;
 	GenerateGUID( g, k );
 	s_keymap[g] = k;
+	AddKeyValueString( g, v );
+}
+
+void KVStore::AddKeyValueString( const Guid &g, const char *v )
+{
 	Value &val = m_store[g];
 	val.type = KVString;
 	val.str = strdup( v );
@@ -81,9 +85,31 @@ void KVStore::AddKeyValueFloat( const char *k, float v )
 	Guid g;
 	GenerateGUID( g, k );
 	s_keymap[g] = k;
+	AddKeyValueFloat( g, v );
+}
+
+void KVStore::AddKeyValueFloat( Guid const &g, float v )
+{
 	Value &val = m_store[g];
 	val.type = KVFloat;
 	val.f = v;
+}
+
+void KVStore::AddKeyValueFloatArray( const char *k, float *v, int num )
+{
+	Guid g;
+	GenerateGUID( g, k );
+	s_keymap[g] = k;
+	AddKeyValueFloatArray( g, v, num );
+}
+
+void KVStore::AddKeyValueFloatArray( Guid const &g, float *v, int num )
+{
+	Value &val = m_store[g];
+	val.type = KVFloatArray;
+	val.fa = (FloatArray*)malloc( sizeof(FloatArray) + sizeof(float)*(num-1) ); // one entry included in FloatArray struct
+	val.fa->count = num;
+	memcpy( val.fa->f, v, sizeof(float)*num );
 }
 
 void KVStore::AddKeyValueInt( const char *k, int v )
@@ -91,6 +117,11 @@ void KVStore::AddKeyValueInt( const char *k, int v )
 	Guid g;
 	GenerateGUID( g, k );
 	s_keymap[g] = k;
+	AddKeyValueInt( g, v );
+}
+
+void KVStore::AddKeyValueInt( Guid const &g, int v )
+{
 	Value &val = m_store[g];
 	val.type = KVInt;
 	val.i = v;
@@ -219,4 +250,27 @@ void KVStore::Dump( std::string &output ) const
 		b++;
 	}
 
+}
+
+
+void KVStore::MergeInto( KVStore const &other )
+{
+	std::map<Guid,Value>::const_iterator b = other.m_store.begin();
+	while ( b != other.m_store.cend() )
+	{
+		std::map<Guid,Value>::const_iterator f = m_store.find(b->first);
+		if ( f == m_store.cend() )
+		{
+			Value const &v = b->second;
+			if ( v.type == KVString )
+				AddKeyValueString( b->first, v.str );
+			else if ( v.type == KVFloat )
+				AddKeyValueFloat( b->first, v.f );
+			else if ( v.type == KVFloatArray )
+				AddKeyValueFloatArray( b->first, v.fa->f, v.fa->count );
+			else if ( v.type == KVInt )
+				AddKeyValueInt( b->first, v.i );
+		}
+		b++;
+	}
 }

@@ -3,6 +3,8 @@
 #include "kvstore.h"
 #include "fpumath.h"
 
+CoreType Entity::s_Type( &Entity::Super::s_Type );
+
 
 Entity::Entity() : m_level(NULL), m_world(NULL), m_meshDef(NULL)
 {
@@ -15,7 +17,6 @@ Entity::~Entity()
 
 void Entity::Spawn( KVStore const &kv )
 {
-	mtxIdentity( m_wmtx );
 	if ( kv.HasKey( "mesh" ) )
 	{
 		m_meshDef = AnimMeshDefManager()->Get( kv.GetKeyValueString( "mesh" ) );
@@ -23,7 +24,10 @@ void Entity::Spawn( KVStore const &kv )
 		//load_animmesh( m_mesh, kv.GetKeyValueString( "mesh" ), 1.f/8.f );
 	}
 	SetName( kv.GetKeyValueString( "name" ) );
+
+	mtxIdentity( m_wmtx );
 	kv.GetKeyValueFloatArray( &m_wmtx[12], 3, "pos" );
+	kv.GetKeyValueFloatArray( m_pos, 3, "pos" );
 }
 
 void Entity::Clear()
@@ -48,8 +52,9 @@ void Entity::OnRemoveFromLevel( Level *l )
 	m_level = NULL;
 }
 
-void Entity::Use( Entity *by )
+bool Entity::Use( Entity *by )
 {
+	return false;
 }
 
 void Entity::Attack( Entity *by )

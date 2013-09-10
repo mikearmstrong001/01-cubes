@@ -14,7 +14,6 @@ protected:
 
 	bool m_onGround;
 	float m_vel[3];
-	float m_pos[3];
 	float m_rotz;
 	float m_moveSpeed;
 	float m_animDir;
@@ -28,6 +27,9 @@ public:
 
 	void Spawn( KVStore const &kv );
 
-	const float *GetPos() const { return m_pos; };
 	const float  GetRotZ() const { return m_rotz; };
+
+	static CoreType s_Type;
+	virtual CoreType const *Type() const { return &s_Type; }
+	virtual CoreType const *SuperType() const { return &Super::s_Type; }
 };
