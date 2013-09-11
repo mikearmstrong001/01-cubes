@@ -6,6 +6,8 @@ $input v_color0, v_texcoord0, v_texcoord1
  */
 
 #include "../common/common.sh"
+uniform float u_flash;
+
 
 void main()
 {
@@ -13,6 +15,6 @@ void main()
 	vec3 n = normalize( cross( dFdx( v_texcoord0 ), dFdy( v_texcoord0 ) ) );
 	vec4 diffuse = v_color0 * saturate(0.75 + 0.25 * dot( n, normalize(vec3( 0, -0.5, -1.0 )) ));
 	vec3 fogColour = vec3( 0.5, 0.6, 0.7 );
-	gl_FragColor.xyz = mix( diffuse.xyz, fogColour, fogblend );
+	gl_FragColor.xyz = mix( diffuse.xyz + u_flash, fogColour, fogblend );
 	gl_FragColor.w = diffuse.w;
 }

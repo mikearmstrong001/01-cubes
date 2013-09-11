@@ -59,6 +59,11 @@ void Actor::PostDeltaUpdate( float dt )
 	m_wmtx[14] = m_pos[2];
 
 	linkToMap( m_level->GetMap(), this, m_pos );
+
+	if ( m_health < 0.f )
+	{
+		m_level->RemoveEntity( this );
+	}
 }
 
 void Actor::OnAddToLevel( Level *l )
@@ -81,12 +86,14 @@ void Actor::Spawn( KVStore const &kv )
 {
 	Super::Spawn( kv );
 	m_rotz = kv.GetKeyValueFloat( "rotz" );
+	m_health = kv.GetKeyValueFloat( "health" );
 }
 
-bool Actor::AnimUpdate( const char *animName, float dt )
+bool Actor::AnimUpdate( int &tags, const char *animName, float dt )
 {
 	float v = m_vel[0]*m_vel[0] + m_vel[1]*m_vel[1];
 	m_moveSpeed = v;
+	float prevTime = m_animTime;
 	m_animTime += dt;
 
 	const AnimMesh &mesh = *m_meshDef->GetMesh();
@@ -103,6 +110,8 @@ bool Actor::AnimUpdate( const char *animName, float dt )
 
 	//if ( animIndex != -1 )
 	{
+		tags = animTags( mesh.m_anims[animIndex], prevTime, m_animTime );
+
 		float *animStack = (float*)alloca( sizeof(float)*16*mesh.m_submeshs.size() );
 		for ( unsigned int i=0; i<mesh.m_submeshs.size(); i++ )
 		{
@@ -136,4 +145,10 @@ bool Actor::AnimUpdate( const char *animName, float dt )
 	}
 
 	return !mesh.m_anims[animIndex].looping && m_animTime >= mesh.m_anims[animIndex].time;
+}
+
+void Actor::Attack( Entity *by )
+{
+	m_flashTime = m_level->GetTimeMS() + 500;
+	m_health -= 1.f;
 }

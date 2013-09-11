@@ -111,7 +111,8 @@ void Zombie::UpdateDelta( float dt )
 		m_vel[1] = m_moveSpeed*cosf(m_rotz)*dt;
 	}
 
-	AnimUpdate( "walk", dt );
+	int tags;
+	AnimUpdate( tags, "walk", dt );
 
 	move( m_pos, m_vel, m_level->GetMap() );
 

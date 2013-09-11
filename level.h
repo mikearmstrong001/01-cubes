@@ -18,6 +18,8 @@ class Level
 	map_s m_map;
 	MapMesh m_mesh;
 
+	int m_timeMS;
+
 	typedef std::vector< Entity* > EntityContainer;
 	EntityContainer m_entities;
 	int m_curLevel;
@@ -63,6 +65,8 @@ public:
 	map_s* GetMap() { return &m_map; }
 
 	Entity *FindEntity( const char *name );
+
+	int GetTimeMS() const { return m_timeMS; }
 
 	void FindEntities( std::vector<Entity*> &ents, const float pos[3], float radius, CoreType const &type );
 };

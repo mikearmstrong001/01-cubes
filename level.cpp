@@ -199,6 +199,8 @@ bool Level::Load( const char * filename )
 	fclose( f );
 #endif
 
+	m_timeMS = 0;
+
 	return true;
 }
 
@@ -244,6 +246,7 @@ void Level::UpdateFixed( float dt )
 
 void Level::UpdateDelta( float dt )
 {
+	m_timeMS += (dt * 1000.f);
 	UpdateContainer::iterator b = m_deltaUpdate.begin();
 	while ( b != m_deltaUpdate.end() )
 	{
@@ -266,6 +269,11 @@ void Level::UpdateGUI()
 
 void Level::UpdateEnd()
 {
+	for ( unsigned int i=0; i<m_entities.size(); i++)
+	{
+		m_entities[i]->UpdateAttachment();
+	}
+
 	RemoveContainer::iterator b = m_toRemove.begin();
 	while ( b != m_toRemove.end() )
 	{

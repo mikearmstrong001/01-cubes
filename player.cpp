@@ -4,6 +4,7 @@
 #include "imgui\imgui.h"
 #include "misc.h"
 #include "pickup.h"
+#include "fpumath.h"
 
 static ClassCreator<Player> s_PlayerCreator( "Player" );
 CoreType Player::s_Type( &Player::Super::s_Type );
@@ -121,8 +122,33 @@ void Player::UpdateDelta( float dt )
 
 	if ( m_stateIndex == 1 )
 	{
-		if ( AnimUpdate( "swipe", dt ) )
+		int tags;
+		if ( AnimUpdate( tags, "swipe", dt ) )
 			m_stateIndex = 0;
+
+		if ( tags & 1 )
+		{
+			float face[2];
+			face[0] = sinf(m_rotz);
+			face[1] = cosf(m_rotz);
+			std::vector<Entity*> hits;
+			m_level->FindEntities( hits, m_pos, 2.f, Entity::s_Type );
+			for (unsigned int i=0; i<hits.size(); i++)
+			{
+				if ( hits[i] == this )
+					continue;
+				const float *pos = hits[i]->GetPos();
+				float diff[3];
+				vec3Sub( diff, pos, m_pos );
+				float dir[3];
+				vec3Norm( dir, diff );
+				float dp = dir[0] * face[0] + dir[1] * face[1];
+				if ( dp > 0.2f )
+				{
+					hits[i]->Attack( this );
+				}
+			}
+		}
 	}
 #if 0
 	else
@@ -140,7 +166,8 @@ void Player::UpdateDelta( float dt )
 #endif
 	else
 	{
-		AnimUpdate( m_animDir != 0.f ? "walk" : "idle", dt );
+		int tags;
+		AnimUpdate( tags, m_animDir != 0.f ? "walk" : "idle", dt );
 	}
 
 	std::vector<Entity*> pickups;

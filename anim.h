@@ -25,13 +25,21 @@ struct AnimChannel
 	std::vector< AnimKey > keys[AKI_COUNT];
 };
 
+struct AnimTag
+{
+	float time;
+	int   id;
+};
+
 struct Anim
 {
 	std::string name;
 	float time;
 	int looping;
 	std::vector< AnimChannel > channels;
+	std::vector< AnimTag > tags;
 };
 
 
 float animSample( const Anim &anim, int meshIndex, int channelIndex, float t, float def );
+int   animTags( const Anim &anim, float prevT, float curT );

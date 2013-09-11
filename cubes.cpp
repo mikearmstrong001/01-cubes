@@ -301,7 +301,7 @@ void avoidThink( entitystate_s *self, map_s *map, float dt )
 	move( self->pos, self->vel, map );
 #endif
 }
-
+extern bgfx::UniformHandle u_flash;
 #include <Windows.h>
 int _main_(int /*_argc*/, char** /*_argv*/)
 {
@@ -371,6 +371,8 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 
 	// Load fragment shader.
 	mem = loadShader("fs_cubes");
+		u_flash = bgfx::createUniform("u_flash",     bgfx::UniformType::Uniform1f);
+
 	bgfx::FragmentShaderHandle fsh = bgfx::createFragmentShader(mem);
 
 	// Create program from shaders.

@@ -224,18 +224,6 @@ void clearMap( map_s *m, MapMesh &mapMesh, int f[3], int t[3] )
 void addMesh( AnimMesh &amesh, Mesh *mesh, const char *name, float ox, float oy, float oz, float rx, float ry, float rz )
 {
 	AnimSubMesh am;
-#if 0
-	mtxIdentity( am.animmtx );
-	am.animmtx[12] = ox;
-	am.animmtx[13] = oy;
-	am.animmtx[14] = oz;
-	am.animrot[0] = rx;
-	am.animrot[1] = ry;
-	am.animrot[2] = rz;
-	am.animofs[0] = ox;
-	am.animofs[1] = oy;
-	am.animofs[2] = oz;
-#endif
 	am.baserot[0] = rx;
 	am.baserot[1] = ry;
 	am.baserot[2] = rz;
@@ -307,7 +295,7 @@ void renderMesh( const AnimMesh &amesh, const AnimMeshInstance &inst, const floa
 	}
 }
 
-void calcAttachMtx( float fmtx[16], AnimMeshInstance &inst, int index, float ofs[3], float rot[3], float pos[3], float rotz )
+void calcAttachMtx( float fmtx[16], const AnimMeshInstance &inst, int index, const float ofs[3], const float rot[3], const float pos[3], float rotz )
 {
 	float wmtx[16];
 	mtxRotateZ(wmtx, rotz );
@@ -321,13 +309,13 @@ void calcAttachMtx( float fmtx[16], AnimMeshInstance &inst, int index, float ofs
 	amtx[13] = ofs[1];
 	amtx[14] = ofs[2];
 
-	AnimSubMeshJoint &aj = inst.m_submeshPose[index];
+	const AnimSubMeshJoint &aj = inst.m_submeshPose[index];
 	float omtx[16];
 	mtxMul(omtx,amtx,aj.animmtx);
 	mtxMul(fmtx,omtx,wmtx);
 }
 
-void calcAttachMtx( float fmtx[16], AnimMeshInstance &inst, int index, float ofs[3], float rot[3], float wmtx[3] )
+void calcAttachMtx( float fmtx[16], const AnimMeshInstance &inst, int index, const float ofs[3], const float rot[3], const float wmtx[3] )
 {
 	float amtx[16];
 	mtxRotateXYZ(amtx, rot[0], rot[1], rot[2] );
@@ -335,13 +323,21 @@ void calcAttachMtx( float fmtx[16], AnimMeshInstance &inst, int index, float ofs
 	amtx[13] = ofs[1];
 	amtx[14] = ofs[2];
 
-	AnimSubMeshJoint &aj = inst.m_submeshPose[index];
+	const AnimSubMeshJoint &aj = inst.m_submeshPose[index];
 	float omtx[16];
 	mtxMul(omtx,amtx,aj.animmtx);
 	mtxMul(fmtx,omtx,wmtx);
 }
 
-void calcAttachPos( float fpos[16], AnimMeshInstance &inst, int index, float ofs[3], float rot[3], float pos[3], float rotz )
+void calcAttachMtx( float fmtx[16], const AnimMeshInstance &inst, int index, const float amtx[16], const float wmtx[3] )
+{
+	const AnimSubMeshJoint &aj = inst.m_submeshPose[index];
+	float omtx[16];
+	mtxMul(omtx,amtx,aj.animmtx);
+	mtxMul(fmtx,omtx,wmtx);
+}
+
+void calcAttachPos( float fpos[16], const AnimMeshInstance &inst, int index, const float ofs[3], const float rot[3], const float pos[3], float rotz )
 {
 	float wmtx[16];
 	mtxRotateZ(wmtx, rotz );
@@ -355,7 +351,7 @@ void calcAttachPos( float fpos[16], AnimMeshInstance &inst, int index, float ofs
 	amtx[13] = ofs[1];
 	amtx[14] = ofs[2];
 
-	AnimSubMeshJoint &aj = inst.m_submeshPose[index];
+	const AnimSubMeshJoint &aj = inst.m_submeshPose[index];
 	float omtx[16];
 	mtxMul(omtx,amtx,aj.animmtx);
 	float fmtx[16];
@@ -383,16 +379,28 @@ static int toChannelIndex( const std::string &ch )
 	return -1;
 }
 
-static int findmesh( AnimMesh &mesh, const char *name )
+int findmesh( const AnimMesh &mesh, const char *name )
 {
 	for (unsigned int i=0; i<mesh.m_submeshs.size(); i++)
 	{
-		AnimSubMesh &sm = mesh.m_submeshs[i];
-		if ( sm.name == name )
+		const AnimSubMesh &sm = mesh.m_submeshs[i];
+		if ( strcmp( sm.name.c_str(), name ) == 0 )
 			return i;
 	}
 	return -1;
 }
+
+int findmeshattach( const AnimMesh &mesh, const char *name )
+{
+	for (unsigned int i=0; i<mesh.m_attachments.size(); i++)
+	{
+		const AnimMeshAttach &sm = mesh.m_attachments[i];
+		if ( strcmp( sm.name.c_str(), name ) == 0 )
+			return i;
+	}
+	return -1;
+}
+
 
 void load_kv6( Mesh &mesh, const char *filename, float scale )
 {
@@ -515,6 +523,19 @@ void load_animmesh( AnimMesh &mesh, const char *filename, float globalScale )
 				if ( strstr( line, "endanim" ) != 0 )
 				{
 					break;
+				} else
+				if ( strstr( line, "tag" ) != 0 )
+				{
+					strtok( line, " \t" );
+					int id;
+					float time;
+					if ( ParseInt( id ) && ParseFloat( time ) )
+					{
+						anim.tags.push_back( AnimTag() );
+						AnimTag &tag = anim.tags.back();
+						tag.id = id;
+						tag.time = time;
+					}
 				} else
 				if ( strstr( line, "ch" ) != 0 )
 				{

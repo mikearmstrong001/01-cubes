@@ -90,15 +90,16 @@ void makeMapMesh( MapMesh &mapMesh, struct map_s *map, float scale );
 void renderMesh( MapMesh &mapMesh );
 void clearMap( map_s *m, MapMesh &mapMesh, int f[3], int t[3] );
 
-
+int findmesh( const AnimMesh &mesh, const char *name );
+int findmeshattach( const AnimMesh &mesh, const char *name );
 void addMesh( AnimMesh &amesh, Mesh *mesh, const char *name, float ox, float oy, float oz, float rx, float ry, float rz );
 void init_animmeshinstance( AnimMeshInstance &inst, const AnimMesh &amesh );
 void renderMesh( const AnimMesh &amesh, const AnimMeshInstance &inst, const float pos[3], float rotz );
 void renderMesh( const AnimMesh &amesh, const AnimMeshInstance &inst, const float wmtx[16] );
 
-void calcAttachMtx( float fmtx[16], const AnimMeshInstance &inst, int index, float ofs[3], float rot[3], float pos[3], float rotz );
-void calcAttachMtx( float fmtx[16], const AnimMeshInstance &inst, int index, float ofs[3], float rot[3], float wmtx[16] );
-void calcAttachPos( float fpos[3], const AnimMeshInstance &inst, int index, float ofs[3], float rot[3], float pos[3], float rotz );
+void calcAttachMtx( float fmtx[16], const AnimMeshInstance &inst, int index, const float ofs[3], const float rot[3], const float pos[3], float rotz );
+void calcAttachMtx( float fmtx[16], const AnimMeshInstance &inst, int index, const float ofs[3], const float rot[3], const float wmtx[16] );
+void calcAttachPos( float fpos[3], const AnimMeshInstance &inst, int index, const float ofs[3], const float rot[3], const float pos[3], float rotz );
 
 void load_kv6( Mesh &mesh, const char *filename, float scale );
 void load_cub( Mesh &mesh, const char *filename, float px, float py, float pz, float scale );

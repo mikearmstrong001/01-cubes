@@ -38,3 +38,28 @@ float animSample( const Anim &anim, int meshIndex, int channelIndex, float t, fl
 	}
 }
 
+int   animTags( const Anim &anim, float prevT, float curT )
+{
+	if ( anim.looping )
+	{
+		//t = fmodf( fmodf( t, anim.time ) + anim.time, anim.time );
+		curT = fmodf( fmodf( curT, anim.time ) + anim.time, anim.time ) / anim.time;
+		prevT = fmodf( fmodf( prevT, anim.time ) + anim.time, anim.time ) / anim.time;
+	} else
+	{
+		curT = curT / anim.time;
+		prevT = prevT / anim.time;
+	}
+	int out = 0;
+	for (unsigned int i=0; i<anim.tags.size(); i++)
+	{
+		const AnimTag &tag = anim.tags[i];
+		if ( prevT < curT && prevT < tag.time && curT >= tag.time )
+			out |= (1<<tag.id);
+		else if ( prevT > curT && prevT > tag.time && curT >= tag.time )
+			out |= (1<<tag.id);
+	}
+	return out;
+}
+
+

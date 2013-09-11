@@ -15,6 +15,11 @@ protected:
 	Level* m_level;
 	World* m_world;
 
+	std::string m_attachName;
+	std::string m_attachJoint;
+	float m_attachOffsetMtx[16];
+
+	int   m_flashTime;
 	float m_pos[3];
 	float m_wmtx[16];
 	const AnimMeshDef *m_meshDef;
@@ -40,12 +45,17 @@ public:
 	virtual void UpdateDelta( float dt );
 	virtual void UpdateGUI();
 
+	virtual void UpdateAttachment();
+
 	virtual void Render();
 
 	const std::string &GetName() const { return m_name; }
 	void SetName( const char *name ) { m_name = name; }
 
 	const float *GetPos() const { return m_pos; };
+
+	const float *GetWorldMatrix() const { return m_wmtx; }
+	void CalcAttachWorldMatrix( float wmtx[16], const char *name ) const;
 
 	static CoreType s_Type;
 	virtual CoreType const *Type() const { return &s_Type; }

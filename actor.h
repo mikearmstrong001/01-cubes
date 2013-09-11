@@ -10,7 +10,7 @@ protected:
 
 	virtual void PreDeltaUpdate( float dt );
 	virtual void PostDeltaUpdate( float dt );
-	virtual bool AnimUpdate( const char *animName, float dt );
+	virtual bool AnimUpdate( int &tags, const char *animName, float dt );
 
 	bool m_onGround;
 	float m_vel[3];
@@ -19,6 +19,7 @@ protected:
 	float m_animDir;
 	float m_animTime;
 	int   m_stateIndex;
+	float m_health;
 
 public:
 
@@ -26,6 +27,8 @@ public:
 	void OnRemoveFromLevel( Level *l );
 
 	void Spawn( KVStore const &kv );
+
+	void Attack( Entity *by );
 
 	const float  GetRotZ() const { return m_rotz; };
 
