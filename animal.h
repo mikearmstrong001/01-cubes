@@ -9,7 +9,6 @@ public:
 
 	void UpdateFixed( float dt );
 	void UpdateDelta( float dt );
-	void UpdateGUI();
 
 	void Render();
 

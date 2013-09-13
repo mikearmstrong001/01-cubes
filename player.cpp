@@ -5,6 +5,7 @@
 #include "misc.h"
 #include "pickup.h"
 #include "fpumath.h"
+#include "gui.h"
 
 static ClassCreator<Player> s_PlayerCreator( "Player" );
 CoreType Player::s_Type( &Player::Super::s_Type );
@@ -12,6 +13,8 @@ CoreType Player::s_Type( &Player::Super::s_Type );
 void Player::OnAddToLevel( Level *l )
 {
 	Super::OnAddToLevel(l);
+
+	m_level->AddGui( this );
 }
 
 void Player::OnRemoveFromLevel( Level *l )
@@ -183,4 +186,13 @@ void Player::UpdateDelta( float dt )
 	move( m_pos, m_vel, m_level->GetMap() );
 
 	Super::PostDeltaUpdate(dt);
+}
+
+void Player::RenderGUI()
+{
+	float healthWidth = 100.f;
+	float healthRouding = 4.f;
+	guiDrawRoundedRect( 10-3, 10-3, healthWidth+6, 15+6, healthRouding, guiColourRGBA( 20, 20, 20, 255 ) );
+	guiDrawRoundedRect( 10, 10, healthWidth, 15, healthRouding, guiColourRGBA( 200, 0, 0, 255 ) );
+	guiDrawText( 10+(100/2), 10+(15/2), "Health", GUI_ALIGNX_CENTER, GUI_ALIGNY_CENTER, guiColourRGBA( 0, 0, 255, 255 ) );
 }

@@ -67,6 +67,9 @@
     <ClCompile Include="pickup.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="gui.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="anim.h">
@@ -127,6 +130,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="pickup.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="gui.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

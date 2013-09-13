@@ -15,7 +15,8 @@ public:
 
 	//void UpdateFixed( float dt );
 	void UpdateDelta( float dt );
-	//void UpdateGUI();
+	
+	void RenderGUI();
 
 	static CoreType s_Type;
 	virtual CoreType const *Type() const { return &s_Type; }

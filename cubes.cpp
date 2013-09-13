@@ -12,6 +12,7 @@
 #include "fpumath.h"
 #include "processevents.h"
 #include "voxel.h"
+#include "gui.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -359,6 +360,7 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 
 	initParticleDecl();
 	initMeshDecl();
+	guiInit();
 
 	float playerScale = 1.f/8.f;
 	float playerOffsetZ = 20.f * playerScale;
@@ -371,7 +373,7 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 
 	// Load fragment shader.
 	mem = loadShader("fs_cubes");
-		u_flash = bgfx::createUniform("u_flash",     bgfx::UniformType::Uniform1f);
+	u_flash = bgfx::createUniform("u_flash",     bgfx::UniformType::Uniform1f);
 
 	bgfx::FragmentShaderHandle fsh = bgfx::createFragmentShader(mem);
 
@@ -486,12 +488,14 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 
 			world.Render();
 
-			mtxIdentity(mtx);
-			// Set model matrix for rendering.
-			//bgfx::setTransform(entities[0].wmtx);
-			//renderParticleSystem( testps );
-			// Advance to next frame. Rendering thread will be kicked to 
-			// process submitted rendering primitives.
+			// Set view and projection matrix for view 1.
+			mtxOrtho(proj, 0.f, 1280.f, 720.f, 0.f, 0.0f, 1000.f);
+			bgfx::setViewTransform(1, NULL, proj);
+			bgfx::setTransform(mtx);
+			bgfx::setViewRect(1, 0, 0, (uint16_t)width, (uint16_t)height);
+			bgfx::submit(1);
+			world.RenderGUI();
+
 			bgfx::frame();
 		}
 	}

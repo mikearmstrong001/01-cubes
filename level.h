@@ -27,7 +27,7 @@ class Level
 	typedef std::vector< Entity* > UpdateContainer;
 	UpdateContainer m_fixedUpdate;
 	UpdateContainer m_deltaUpdate;
-	UpdateContainer m_guiUpdate;
+	UpdateContainer m_guiRender;
 	UpdateContainer m_renderUpdate;
 
 	typedef std::vector< Entity* > RemoveContainer;
@@ -54,10 +54,10 @@ public:
 	void UpdateBegin();
 	void UpdateFixed( float dt );
 	void UpdateDelta( float dt );
-	void UpdateGUI();
 	void UpdateEnd();
 
 	void Render();
+	void RenderGUI();
 
 	void AddEntity( Entity *ent );
 	void RemoveEntity( Entity *ent );

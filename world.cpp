@@ -58,14 +58,6 @@ void World::UpdateDelta( float dt )
 	m_levels[m_curLevel]->UpdateDelta( dt );
 }
 
-void World::UpdateGUI()
-{
-	if ( m_curLevel == -1 )
-		return;
-
-	m_levels[m_curLevel]->UpdateGUI();
-}
-
 void World::UpdateEnd()
 {
 	if ( m_curLevel == -1 )
@@ -80,6 +72,14 @@ void World::Render()
 		return;
 
 	m_levels[m_curLevel]->Render();
+}
+
+void World::RenderGUI()
+{
+	if ( m_curLevel == -1 )
+		return;
+
+	m_levels[m_curLevel]->RenderGUI();
 }
 
 Entity *World::FindEntityInCurrentLevel( const char *name )

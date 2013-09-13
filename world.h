@@ -21,10 +21,10 @@ public:
 	void UpdateBegin();
 	void UpdateFixed( float dt );
 	void UpdateDelta( float dt );
-	void UpdateGUI();
 	void UpdateEnd();
 
 	void Render();
+	void RenderGUI();
 
 	Entity *FindEntityInCurrentLevel( const char *name );
 };

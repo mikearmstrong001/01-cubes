@@ -82,10 +82,6 @@ void Entity::UpdateDelta( float dt )
 {
 }
 
-void Entity::UpdateGUI()
-{
-}
-
 void Entity::UpdateAttachment()
 {
 	if ( m_attachName.empty() )
@@ -108,6 +104,10 @@ void Entity::Render()
 	}
 	bgfx::setUniform( u_flash, &flash, 1 );
 	renderMesh( *m_meshDef->GetMesh(), m_meshInstance, m_wmtx );
+}
+
+void Entity::RenderGUI()
+{
 }
 
 void Entity::CalcAttachWorldMatrix( float wmtx[16], const char *name ) const

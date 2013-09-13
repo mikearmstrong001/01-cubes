@@ -66,10 +66,10 @@ void Level::AddDelta( Entity* ent )
 
 void Level::AddGui( Entity* ent )
 {
-	if ( std::find( m_guiUpdate.cbegin(), m_guiUpdate.cend(), ent ) != m_guiUpdate.cend() )
+	if ( std::find( m_guiRender.cbegin(), m_guiRender.cend(), ent ) != m_guiRender.cend() )
 		return;
-	m_guiUpdate.push_back( ent );
-	std::sort( m_guiUpdate.begin(), m_guiUpdate.end() );
+	m_guiRender.push_back( ent );
+	std::sort( m_guiRender.begin(), m_guiRender.end() );
 }
 
 void Level::AddRender( Entity* ent )
@@ -102,12 +102,12 @@ void Level::RemoveDelta( Entity* ent )
 
 void Level::RemoveGui( Entity* ent )
 {
-	UpdateContainer::iterator f = std::find( m_guiUpdate.begin(), m_guiUpdate.end(), ent );
+	UpdateContainer::iterator f = std::find( m_guiRender.begin(), m_guiRender.end(), ent );
 
-	if ( f == m_guiUpdate.end() )
+	if ( f == m_guiRender.end() )
 		return;
 
-	m_guiUpdate.erase( f );
+	m_guiRender.erase( f );
 }
 
 void Level::RemoveRender( Entity* ent )
@@ -225,7 +225,7 @@ void Level::Clear()
 
 	m_fixedUpdate.clear();
 	m_deltaUpdate.clear();
-	m_guiUpdate.clear();
+	m_guiRender.clear();
 	m_renderUpdate.clear();
 }
 
@@ -246,23 +246,12 @@ void Level::UpdateFixed( float dt )
 
 void Level::UpdateDelta( float dt )
 {
-	m_timeMS += (dt * 1000.f);
+	m_timeMS += (int)(dt * 1000.f);
 	UpdateContainer::iterator b = m_deltaUpdate.begin();
 	while ( b != m_deltaUpdate.end() )
 	{
 		Entity *ent = *b;
 		ent->UpdateDelta( dt );
-		b++;
-	}
-}
-
-void Level::UpdateGUI()
-{
-	UpdateContainer::iterator b = m_guiUpdate.begin();
-	while ( b != m_guiUpdate.end() )
-	{
-		Entity *ent = *b;
-		ent->UpdateGUI();
 		b++;
 	}
 }
@@ -302,6 +291,18 @@ void Level::Render()
 		b++;
 	}
 }
+
+void Level::RenderGUI()
+{
+	UpdateContainer::iterator b = m_guiRender.begin();
+	while ( b != m_guiRender.end() )
+	{
+		Entity *ent = *b;
+		ent->RenderGUI();
+		b++;
+	}
+}
+
 
 void Level::AddEntity( Entity *ent )
 {

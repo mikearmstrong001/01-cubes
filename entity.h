@@ -43,11 +43,11 @@ public:
 
 	virtual void UpdateFixed( float dt );
 	virtual void UpdateDelta( float dt );
-	virtual void UpdateGUI();
 
 	virtual void UpdateAttachment();
 
 	virtual void Render();
+	virtual void RenderGUI();
 
 	const std::string &GetName() const { return m_name; }
 	void SetName( const char *name ) { m_name = name; }

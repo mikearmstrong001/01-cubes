@@ -1570,6 +1570,7 @@
     </ClCompile>
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="entitydef.cpp" />
+    <ClCompile Include="gui.cpp" />
     <ClCompile Include="kv6.cpp" />
     <ClCompile Include="kvstore.cpp" />
     <ClCompile Include="level.cpp" />
@@ -1600,6 +1601,7 @@
     <ClInclude Include="cub.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="entitydef.h" />
+    <ClInclude Include="gui.h" />
     <ClInclude Include="kv6.h" />
     <ClInclude Include="kvstore.h" />
     <ClInclude Include="level.h" />
