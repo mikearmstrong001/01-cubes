@@ -188,12 +188,17 @@ char *skipws( char *txt )
 	return txt;
 }
 
-bool ParseString( std::string &i )
+bool ParseString( std::string &i, const char *&cursor )
 {
-	const char *tok = strtok( NULL, " \t" );
-	if ( tok )
+	return ParseToken( i, cursor );
+}
+
+bool ParseInt( int &i, const char *&cursor )
+{
+	std::string tok;
+	if ( ParseToken( tok, cursor ) )
 	{
-		i = tok;
+		i = atoi( tok.c_str() );
 		return true;
 	}
 	else
@@ -202,26 +207,12 @@ bool ParseString( std::string &i )
 	}
 }
 
-bool ParseInt( int &i )
+bool ParseFloat( float &f, const char *&cursor )
 {
-	const char *tok = strtok( NULL, " \t" );
-	if ( tok )
+	std::string tok;
+	if ( ParseToken( tok, cursor ) )
 	{
-		i = atoi( tok );
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-bool ParseFloat( float &f )
-{
-	const char *tok = strtok( NULL, " \t" );
-	if ( tok )
-	{
-		f = (float)atof( tok );
+		f = atof( tok.c_str() );
 		return true;
 	}
 	else

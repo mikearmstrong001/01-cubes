@@ -1,5 +1,6 @@
 #include "particle.h"
 #include "fpumath.h"
+#include "misc.h"
 #include <map>
 #include <string>
 #include <bgfx.h>
@@ -59,19 +60,23 @@ static bool loadGraph( particleGraph_s &graph, int numElements, FILE *f )
 {
 	char line[2048];
 	fgets( line, sizeof(line), f );
-	int num = atoi( strtok( line, " \t\n\r" ) );
+	const char *cursor = line;
+	int num;
+	ParseInt( num, cursor );
 
 	graph.numElements = numElements;
 	graph.data.reserve( num * (numElements+1) );
 
 	for (int i=0; i<num; i++)
 	{
-		char *tok;
-		tok = strtok( NULL, " \t\n\r" );
-		graph.data.push_back( (float)atof( strtok( NULL, " \t\n\r" ) ) );
+		float v;
+		ParseFloat( v, cursor );
+		graph.data.push_back( v );
 		for (int j=0; j<numElements; j++)
-			graph.data.push_back( (float)atof( strtok( NULL, " \t\n\r" ) ) );
-		tok = strtok( NULL, " \t\n\r" );
+		{
+			ParseFloat( v, cursor );
+			graph.data.push_back( v );
+		}
 	}
 	return true;
 }

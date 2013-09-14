@@ -1,6 +1,15 @@
 #include "inventory.h"
 
 
+void InventoryItemDef::Reload()
+{
+}
+
+void InventoryItemDef::Clear()
+{
+}
+
+
 
 
 InventoryItemDefMgr *InventoryItemDefManager()

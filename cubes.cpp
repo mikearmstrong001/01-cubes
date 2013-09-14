@@ -29,6 +29,8 @@
 #include "particle.h"
 #include <imgui\imgui.h>
 #include "entitydef.h"
+#include "craft.h"
+#include "inventory.h"
 #include "world.h"
 #include "player.h"
 
@@ -329,6 +331,8 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 		);
 
 	EntityDefManager()->LoadGroup( "entities.template" );
+	CraftRecipeDefManager()->LoadGroup( "craft.rec" );
+	InventoryItemDefManager()->LoadGroup( "inventory.items" );
 	EntityDefManager()->Get( "level1.def" );
 
 	const bgfx::Memory *mapMem = load( "data/stbmap.vxl" );

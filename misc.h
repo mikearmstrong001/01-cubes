@@ -13,9 +13,9 @@ void* fload(const char* _filePath, unsigned int *len=NULL);
 const char *skipws( const char *txt );
 char *skipws( char *txt );
 
-bool ParseString( std::string &i );
-bool ParseInt( int &i );
-bool ParseFloat( float &f );
+bool ParseString( std::string &i, const char *&cursor );
+bool ParseInt( int &i, const char *&cursor );
+bool ParseFloat( float &f, const char *&cursor );
 
 bool ParseToken( std::string &token, const char *&s );
 
@@ -23,6 +23,8 @@ bool isoneof( char c, const char *possible );
 const char *firstof( const char *s, const char *possible );
 const char *firstnotof( const char *s, const char *possible );
 
+#pragma warning(push)
+#pragma warning(disable: 4127)
 
 struct CoreType
 {
@@ -305,3 +307,5 @@ public:
 		}
 	}
 };
+
+#pragma warning(pop)

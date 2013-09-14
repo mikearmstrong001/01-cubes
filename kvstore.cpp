@@ -3,6 +3,29 @@
 
 std::map<Guid,std::string> KVStore::s_keymap;
 
+void KVStore::Parse( KVStore *kv, const char *&cursor )
+{
+	std::string token;
+	while ( ParseToken( token, cursor ) && token != "}" )
+	{
+		std::string key;
+		std::swap( key, token );
+		std::string value;
+		ParseToken( value, cursor );
+		if ( value == "{" )
+		{
+			KVStore *store = new KVStore;
+			Parse( store, cursor );
+			kv->AddKeyValueKeyValue( key.c_str(), store );
+		}
+		else
+		{
+			kv->AddKeyValueString( key.c_str(), value.c_str() );
+		}
+	}
+}
+
+
 KVStore::KVStore()
 {
 }
@@ -14,40 +37,22 @@ KVStore::~KVStore()
 
 bool KVStore::Load( const char *filename )
 {
-	FILE *f = fopen( filename, "rb" );
+	char* f = (char*)fload(filename);
 	if ( f )
 	{
-		char line[4096];
-		while ( fgets( line, sizeof(line), f ) )
-		{
-			std::string str = line;
-
-			std::string::size_type startk = str.find_first_not_of( " \t\n\r" );
-			if ( startk == std::string::npos )
-				continue;
-
-			std::string::size_type endk = str.find_first_of( " \t\n\r", startk+1 );
-			if ( endk == std::string::npos )
-				continue;
-
-			std::string::size_type startv = str.find_first_not_of( " \t\n\r", endk+1 );
-			if ( startv == std::string::npos )
-				continue;
-
-			std::string::size_type endv = str.find_first_of( " \t\n\r", startv+1 );
-
-			std::string key = str.substr( startk, endk-startk );
-			std::string val = str.substr( startv, endv!=std::string::npos ? endv-startv : endv );
-
-			AddKeyValueString( key.c_str(), val.c_str() );
-		}
-
+		const char *cursor = f;
+		Parse( cursor );
 		return true;
 	}
 	else
 	{
 		return false;
 	}
+}
+
+void KVStore::Parse( const char *&cursor )
+{
+	Parse( this, cursor );
 }
 
 void KVStore::Clear()
@@ -57,12 +62,29 @@ void KVStore::Clear()
 	{
 		Value &v = b->second;
 		
-		if ( v.type == KVString )
+		if ( v.type == KVTString )
 			free( (void*)v.str );
+		if ( v.type == KVTStore )
+			delete v.store;
 
 		b++;
 	}
 	m_store.clear();
+}
+
+void KVStore::AddKeyValueKeyValue( const char *k, const KVStore *v )
+{
+	Guid g;
+	GenerateGUID( g, k );
+	s_keymap[g] = k;
+	AddKeyValueKeyValue( g, v );
+}
+
+void KVStore::AddKeyValueKeyValue( const Guid &g, const KVStore *v )
+{
+	Value &val = m_store[g];
+	val.type = KVTStore;
+	val.store = v;
 }
 
 void KVStore::AddKeyValueString( const char *k, const char *v )
@@ -76,57 +98,9 @@ void KVStore::AddKeyValueString( const char *k, const char *v )
 void KVStore::AddKeyValueString( const Guid &g, const char *v )
 {
 	Value &val = m_store[g];
-	val.type = KVString;
+	val.type = KVTString;
 	val.str = strdup( v );
 }
-
-void KVStore::AddKeyValueFloat( const char *k, float v )
-{
-	Guid g;
-	GenerateGUID( g, k );
-	s_keymap[g] = k;
-	AddKeyValueFloat( g, v );
-}
-
-void KVStore::AddKeyValueFloat( Guid const &g, float v )
-{
-	Value &val = m_store[g];
-	val.type = KVFloat;
-	val.f = v;
-}
-
-void KVStore::AddKeyValueFloatArray( const char *k, float *v, int num )
-{
-	Guid g;
-	GenerateGUID( g, k );
-	s_keymap[g] = k;
-	AddKeyValueFloatArray( g, v, num );
-}
-
-void KVStore::AddKeyValueFloatArray( Guid const &g, float *v, int num )
-{
-	Value &val = m_store[g];
-	val.type = KVFloatArray;
-	val.fa = (FloatArray*)malloc( sizeof(FloatArray) + sizeof(float)*(num-1) ); // one entry included in FloatArray struct
-	val.fa->count = num;
-	memcpy( val.fa->f, v, sizeof(float)*num );
-}
-
-void KVStore::AddKeyValueInt( const char *k, int v )
-{
-	Guid g;
-	GenerateGUID( g, k );
-	s_keymap[g] = k;
-	AddKeyValueInt( g, v );
-}
-
-void KVStore::AddKeyValueInt( Guid const &g, int v )
-{
-	Value &val = m_store[g];
-	val.type = KVInt;
-	val.i = v;
-}
-
 
 const char *KVStore::GetKeyValueString( const char *k, const char *def ) const
 {
@@ -137,19 +111,7 @@ const char *KVStore::GetKeyValueString( const char *k, const char *def ) const
 		return def;
 	
 	Value const &v = b->second;
-	/*if ( v.type == KVFloat )
-	{
-		char buf[1024];
-		sprintf( buf, "%f", v.f );
-		return buf;
-	}
-	if ( v.type == KVInt )
-	{
-		char buf[1024];
-		sprintf( buf, "%d", v.i );
-		return buf;
-	}*/
-	if ( v.type == KVString )
+	if ( v.type == KVTString )
 	{
 		return v.str;
 	}
@@ -166,12 +128,8 @@ float KVStore::GetKeyValueFloat( const char *k, float def ) const
 		return def;
 	
 	Value const &v = b->second;
-	if ( v.type == KVInt )
-		return (float)v.i;
-	if ( v.type == KVString )
+	if ( v.type == KVTString )
 		return (float)atof(v.str);
-	if ( v.type == KVFloat )
-		return v.f;
 
 	return def;
 }
@@ -185,12 +143,8 @@ int KVStore::GetKeyValueInt( const char *k, int def ) const
 		return def;
 	
 	Value const &v = b->second;
-	if ( v.type == KVFloat )
-		return (int)floorf(v.f);
-	if ( v.type == KVString )
+	if ( v.type == KVTString )
 		return (int)floor(atof(v.str));
-	if ( v.type == KVInt )
-		return v.i;
 
 	return def;
 }
@@ -205,21 +159,17 @@ void KVStore::GetKeyValueFloatArray( float *out, int num, const char *k ) const
 		return;
 	
 	Value const &v = b->second;
-	if ( v.type == KVInt )
-		out[0] = (float)v.i;
-	if ( v.type == KVString )
+	if ( v.type == KVTString )
 	{
-		char temp[1024];
-		strcpy( temp, v.str );
-		char *tok = strtok( temp, " \t\n\r" );
-		out[0] = (float)atof(tok);
-		for (int i=1; i<num; i++)
+		const char *cursor = v.str;
+		for (int i=0; i<num; i++)
 		{
-			ParseFloat( out[i] );
+			std::string tok;
+			if ( !ParseToken( tok, cursor ) )
+				break;
+			out[i] = atof( tok.c_str() );
 		}
 	}
-	if ( v.type == KVFloat )
-		out[0] = v.f;
 }
 
 
@@ -262,14 +212,8 @@ void KVStore::MergeInto( KVStore const &other )
 		if ( f == m_store.cend() )
 		{
 			Value const &v = b->second;
-			if ( v.type == KVString )
+			if ( v.type == KVTString )
 				AddKeyValueString( b->first, v.str );
-			else if ( v.type == KVFloat )
-				AddKeyValueFloat( b->first, v.f );
-			else if ( v.type == KVFloatArray )
-				AddKeyValueFloatArray( b->first, v.fa->f, v.fa->count );
-			else if ( v.type == KVInt )
-				AddKeyValueInt( b->first, v.i );
 		}
 		b++;
 	}

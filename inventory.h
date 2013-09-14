@@ -1,14 +1,14 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "kvstore.h"
 #include "misc.h"
 
-class InventoryItemDef
+class InventoryItemDef : public KVStore
 {
 	std::string m_guiName;
 public:
 
-	virtual bool Load( const char *filename );
 	virtual void Reload();
 	virtual void Clear();
 };

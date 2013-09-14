@@ -6,18 +6,11 @@
 
 class KVStore
 {
+protected:
 	enum KVType
 	{
-		KVString,
-		KVFloat,
-		KVFloatArray,
-		KVInt,
-	};
-
-	struct FloatArray
-	{
-		int count;
-		float f[1];
+		KVTString,
+		KVTStore,
 	};
 
 	struct Value
@@ -26,14 +19,17 @@ class KVStore
 		union
 		{
 			const char *str;
-			float f;
-			int i;
-			FloatArray *fa;
+			const KVStore *store;
 		};
 	};
 
 	std::map<Guid,Value> m_store;
 	static std::map<Guid,std::string> s_keymap;
+
+	void AddKeyValueKeyValue( const char *k, const KVStore *v );
+	void AddKeyValueKeyValue( const Guid &g, const KVStore *v );
+
+	static void Parse( KVStore *kv, const char *&cursor );
 
 public:
 
@@ -41,22 +37,18 @@ public:
 	virtual ~KVStore();
 
 	virtual bool Load( const char *filename );
+	virtual void Parse( const char *&cursor );
 	virtual void Clear();
 
 	void AddKeyValueString( const char *k, const char *v );
-	void AddKeyValueFloat( const char *k, float v );
-	void AddKeyValueFloatArray( const char *k, float *v, int num );
-	void AddKeyValueInt( const char *k, int v );
-
 	void AddKeyValueString( const Guid &g, const char *v );
-	void AddKeyValueFloat( const Guid &g, float v );
-	void AddKeyValueFloatArray( const Guid &g, float *v, int num );
-	void AddKeyValueInt( const Guid &g, int v );
+
 
 	const char *GetKeyValueString( const char *k, const char *def = "" ) const;
 	float GetKeyValueFloat( const char *k, float def = 0.f ) const;
 	void GetKeyValueFloatArray( float *out, int num, const char *k ) const;
 	int GetKeyValueInt( const char *k, int def = 0 ) const;
+	const KVStore *GetKeyValueKeyValue( const char *k ) const;
 
 	bool HasKey( const char *k ) const;
 

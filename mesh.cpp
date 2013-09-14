@@ -519,17 +519,18 @@ void load_animmesh( AnimMesh &mesh, const char *filename, float globalScale )
 			anim.channels.resize( mesh.m_submeshs.size() );
 			while ( fgets( curline, sizeof(curline)-1, f ) )
 			{
-				char *line = skipws( curline );
-				if ( strstr( line, "endanim" ) != 0 )
+				const char *line = skipws( curline );
+				std::string tok;
+				ParseToken( tok, line );
+				if ( tok == "endanim" )
 				{
 					break;
 				} else
-				if ( strstr( line, "tag" ) != 0 )
+				if ( tok == "tag" )
 				{
-					strtok( line, " \t" );
 					int id;
 					float time;
-					if ( ParseInt( id ) && ParseFloat( time ) )
+					if ( ParseInt( id, line ) && ParseFloat( time, line ) )
 					{
 						anim.tags.push_back( AnimTag() );
 						AnimTag &tag = anim.tags.back();
@@ -537,17 +538,16 @@ void load_animmesh( AnimMesh &mesh, const char *filename, float globalScale )
 						tag.time = time;
 					}
 				} else
-				if ( strstr( line, "ch" ) != 0 )
+				if ( tok =="ch" )
 				{
-					strtok( line, " \t" );
 					std::string meshName, chName;
-					if ( ParseString( meshName ) && ParseString( chName ) )
+					if ( ParseString( meshName, line ) && ParseString( chName, line ) )
 					{
 						int meshIndex = findmesh( mesh, meshName.c_str() );
 						int chType = toChannelIndex( chName.c_str() );
 						AnimChannel &ch = anim.channels[meshIndex];
 						float keyTime, keyValue;
-						while ( ParseFloat( keyTime ) && ParseFloat( keyValue ) )
+						while ( ParseFloat( keyTime, line ) && ParseFloat( keyValue, line ) )
 						{
 							AnimKey ak;
 							ak.time = keyTime;

@@ -1,5 +1,13 @@
 #include "craft.h"
 
+void CraftRecipeDef::Reload()
+{
+}
+
+void CraftRecipeDef::Clear()
+{
+}
+
 
 CraftRecipeDefMgr *CraftRecipeDefManager()
 {

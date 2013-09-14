@@ -1,23 +1,14 @@
 #pragma once
 
 #include "misc.h"
+#include "kvstore.h"
 #include <string>
 #include <vector>
 
-struct CraftIngredient
+class CraftRecipeDef : public KVStore
 {
-	std::string item;
-	float quatity;
-};
-
-class CraftRecipeDef
-{
-	std::vector<CraftIngredient> m_requirements;
-	std::string m_item;
-
 public:
 
-	virtual bool Load( const char *filename );
 	virtual void Reload();
 	virtual void Clear();
 };
