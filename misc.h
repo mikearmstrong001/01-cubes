@@ -159,7 +159,7 @@ public:
 	virtual void Clear();
 };
 
-template <class T>
+template <class T, bool LOADGROUP=false >
 class TypedDefMgr : public DefMgr
 {
 protected:
@@ -214,6 +214,41 @@ public:
 		}
 		m_defs.clear();
 	}
+
+	bool LoadGroup( const char *filename )
+	{
+		if ( LOADGROUP )
+		{
+			char* ents = (char*)fload(filename);
+			if ( ents )
+			{
+				const char *cursor = ents;
+				while ( cursor && *cursor )
+				{
+					std::string name, token;
+					if ( !ParseToken( name, cursor ) )
+						break;
+					if ( !ParseToken( token, cursor ) )
+						break;
+					if ( token == "{" )
+					{
+						T *def = new T;
+						def->Parse( cursor );
+						Guid g;
+						GenerateGUID( g, name.c_str() );
+						m_defs[g] = def;
+					}
+				}
+				free( ents );
+			}
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 };
 
 template <class T, int S>

@@ -70,6 +70,12 @@
     <ClCompile Include="gui.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="inventory.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="craft.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="anim.h">
@@ -133,6 +139,12 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="gui.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="inventory.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="craft.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

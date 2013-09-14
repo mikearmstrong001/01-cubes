@@ -12,7 +12,7 @@ void EntityDef::Reload()
 	Super::Load( m_filename.c_str() );
 }
 
-static void ParseEnt( EntityDef &kv, const char *&cursor )
+void EntityDef::Parse( const char *&cursor )
 {
 	std::string token;
 	ParseToken( token, cursor );
@@ -22,12 +22,13 @@ static void ParseEnt( EntityDef &kv, const char *&cursor )
 		std::swap( key, token );
 		std::string value;
 		ParseToken( value, cursor );
-		kv.AddKeyValueString( key.c_str(), value.c_str() );
+		AddKeyValueString( key.c_str(), value.c_str() );
 
 		ParseToken( token, cursor );
 	}
 }
 
+#if 0
 bool EntityDefMgr::LoadGroup( const char *filename )
 {
 	char* ents = (char*)fload(filename);
@@ -54,7 +55,7 @@ bool EntityDefMgr::LoadGroup( const char *filename )
 	}
 	return true;
 }
-
+#endif
 
 EntityDefMgr *EntityDefManager()
 {

@@ -1565,12 +1565,14 @@
     <ClCompile Include="anim.cpp" />
     <ClCompile Include="animal.cpp" />
     <ClCompile Include="audio.cpp" />
+    <ClCompile Include="craft.cpp" />
     <ClCompile Include="cub.cpp" />
     <ClCompile Include="cubes.cpp">
     </ClCompile>
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="entitydef.cpp" />
     <ClCompile Include="gui.cpp" />
+    <ClCompile Include="inventory.cpp" />
     <ClCompile Include="kv6.cpp" />
     <ClCompile Include="kvstore.cpp" />
     <ClCompile Include="level.cpp" />
@@ -1598,10 +1600,12 @@
   <ItemGroup>
     <ClInclude Include="anim.h" />
     <ClInclude Include="animal.h" />
+    <ClInclude Include="craft.h" />
     <ClInclude Include="cub.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="entitydef.h" />
     <ClInclude Include="gui.h" />
+    <ClInclude Include="inventory.h" />
     <ClInclude Include="kv6.h" />
     <ClInclude Include="kvstore.h" />
     <ClInclude Include="level.h" />

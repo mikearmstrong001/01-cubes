@@ -62,13 +62,26 @@ void Player::UpdateDelta( float dt )
 		m_vel[1] =  sinf(m_rotz) * dt;
 	}
 	
-	if ( m_stateIndex == 0 && GetAsyncKeyState( 'E' ) & 1 )
+	if ( m_stateIndex == 0 && GetAsyncKeyState( VK_SPACE ) & 1 )
 	{
 		m_animTime = 0.f;
 		m_stateIndex = 1;
 	}
 
-	if ( GetAsyncKeyState( VK_SPACE ) < 0 && m_onGround )
+	if ( m_stateIndex == 0 && GetAsyncKeyState( 'E' ) & 1 )
+	{
+		std::vector<Entity*> pickups;
+		m_level->FindEntities( pickups, m_pos, 1.f, Pickup::s_Type );
+		for (unsigned int i=0; i<pickups.size(); i++)
+		{
+			if ( pickups[i]->Use( this ) )
+			{
+				//m_level->RemoveEntity( pickups[i] );
+			}
+		}
+	}
+
+	if ( GetAsyncKeyState( VK_LSHIFT ) < 0 && m_onGround )
 	{
 		m_vel[2] = 0.6f;
 	}
@@ -171,16 +184,6 @@ void Player::UpdateDelta( float dt )
 	{
 		int tags;
 		AnimUpdate( tags, m_animDir != 0.f ? "walk" : "idle", dt );
-	}
-
-	std::vector<Entity*> pickups;
-	m_level->FindEntities( pickups, m_pos, 1.f, Pickup::s_Type );
-	for (unsigned int i=0; i<pickups.size(); i++)
-	{
-		if ( pickups[i]->Use( this ) )
-		{
-			m_level->RemoveEntity( pickups[i] );
-		}
 	}
 
 	move( m_pos, m_vel, m_level->GetMap() );
