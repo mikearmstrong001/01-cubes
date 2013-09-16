@@ -141,16 +141,30 @@ void KVStore::Clear()
 	m_store.clear();
 }
 
-void KVStore::AddKeyValueKeyValue( const char *k, const KVStore *v )
+void KVStore::AddKeyValueKeyValue( const char *k, const KVStore *v, bool copy )
 {
 	Guid g;
 	GenerateGUID( g, k );
 	s_keymap[g] = k;
-	AddKeyValueKeyValue( g, v );
+	AddKeyValueKeyValue( g, v, copy );
 }
 
-void KVStore::AddKeyValueKeyValue( const Guid &g, const KVStore *v )
+void KVStore::AddKeyValueKeyValue( const Guid &g, const KVStore *v, bool copy )
 {
+	if ( copy )
+	{
+		KVStore *newv = new KVStore;
+		for (unsigned int i=0; i<v->m_store.size(); i++)
+		{
+			const KeyValue &kv = v->m_store[i];
+			if ( kv.v.type == KVTString )
+				newv->AddKeyValueString( kv.k, kv.v.str );
+			else if ( kv.v.type == KVTStore )
+				newv->AddKeyValueKeyValue( kv.k, kv.v.store, true );
+		}
+		v = newv;
+	}
+
 	KeyValue &val = AddItem( g, m_store );
 	val.k = g;
 	val.v.type = KVTStore;
@@ -354,6 +368,8 @@ void KVStore::MergeInto( KVStore const &other )
 			Value const &v = b->v;
 			if ( v.type == KVTString )
 				AddKeyValueString( b->k, v.str );
+			if ( v.type == KVTStore )
+				AddKeyValueKeyValue( b->k, v.store, true );
 		}
 		b++;
 	}

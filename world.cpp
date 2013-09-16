@@ -1,6 +1,7 @@
 #include "world.h"
 #include "level.h"
 #include "entitydef.h"
+#include "menu.h"
 
 World::World() : m_curLevel(-1)
 {
@@ -16,6 +17,7 @@ bool World::Load( const char * filename )
 	EntityDef const *def = EntityDefManager()->Get( filename );
 
 	Level *l = new Level;
+	l->SetWorld( this );
 	l->Load( def->GetKeyValueString( "level" ) );
 	m_levels.push_back( l );
 	m_curLevel = 0;
@@ -80,6 +82,11 @@ void World::RenderGUI()
 		return;
 
 	m_levels[m_curLevel]->RenderGUI();
+
+	if ( m_menus.size() )
+	{
+		m_menus.top()->Render();
+	}
 }
 
 Entity *World::FindEntityInCurrentLevel( const char *name )
@@ -89,3 +96,17 @@ Entity *World::FindEntityInCurrentLevel( const char *name )
 
 	return m_levels[m_curLevel]->FindEntity( name );
 }
+
+void World::PushMenu( Menu *m )
+{
+	m_menus.push( m );
+}
+
+void World::PopMenu()
+{
+	Menu *m = m_menus.top();
+	m_menus.pop();
+	delete m;
+}
+
+

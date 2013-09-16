@@ -35,8 +35,8 @@ protected:
 	std::vector<KeyValue> m_store;
 	static std::map<Guid,std::string> s_keymap;
 
-	void AddKeyValueKeyValue( const char *k, const KVStore *v );
-	void AddKeyValueKeyValue( const Guid &g, const KVStore *v );
+	void AddKeyValueKeyValue( const char *k, const KVStore *v, bool copy = false );
+	void AddKeyValueKeyValue( const Guid &g, const KVStore *v, bool copy = false );
 
 	static void Parse( KVStore *kv, const char *&cursor );
 	static void ParseArray( KVStore *kv, const char *&cursor );

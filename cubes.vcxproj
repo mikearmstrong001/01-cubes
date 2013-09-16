@@ -1576,6 +1576,7 @@
     <ClCompile Include="kv6.cpp" />
     <ClCompile Include="kvstore.cpp" />
     <ClCompile Include="level.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="mesh.cpp" />
     <ClCompile Include="actor.cpp" />
     <ClCompile Include="misc.cpp" />
@@ -1586,6 +1587,8 @@
     <ClCompile Include="spawners.cpp" />
     <ClCompile Include="voxel.cpp" />
     <ClCompile Include="vxl.cpp" />
+    <ClCompile Include="workbench.cpp" />
+    <ClCompile Include="workbench_menu.cpp" />
     <ClCompile Include="world.cpp" />
     <ClCompile Include="zombie.cpp" />
   </ItemGroup>
@@ -1609,6 +1612,7 @@
     <ClInclude Include="kv6.h" />
     <ClInclude Include="kvstore.h" />
     <ClInclude Include="level.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="actor.h" />
     <ClInclude Include="misc.h" />
@@ -1619,6 +1623,8 @@
     <ClInclude Include="spawners.h" />
     <ClInclude Include="voxel.h" />
     <ClInclude Include="vxl.h" />
+    <ClInclude Include="workbench.h" />
+    <ClInclude Include="workbench_menu.h" />
     <ClInclude Include="world.h" />
     <ClInclude Include="zombie.h" />
   </ItemGroup>

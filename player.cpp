@@ -70,12 +70,13 @@ void Player::UpdateDelta( float dt )
 
 	if ( m_stateIndex == 0 && GetAsyncKeyState( 'E' ) & 1 )
 	{
-		std::vector<Entity*> pickups;
-		m_level->FindEntities( pickups, m_pos, 1.f, Pickup::s_Type );
-		for (unsigned int i=0; i<pickups.size(); i++)
+		std::vector<Entity*> usables;
+		m_level->FindEntities( usables, m_pos, 1.f, Entity::s_Type );
+		for (unsigned int i=0; i<usables.size(); i++)
 		{
-			if ( pickups[i]->Use( this ) )
+			if ( usables[i]->Use( this ) )
 			{
+				break;
 				//m_level->RemoveEntity( pickups[i] );
 			}
 		}

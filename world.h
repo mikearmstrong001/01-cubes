@@ -1,13 +1,16 @@
 #pragma once
 
 #include <vector>
+#include <stack>
 
 class Level;
 class Entity;
+class Menu;
 
 class World
 {
 	std::vector< Level* > m_levels;
+	std::stack< Menu* > m_menus;
 	int m_curLevel;
 
 public:
@@ -25,6 +28,9 @@ public:
 
 	void Render();
 	void RenderGUI();
+
+	void PushMenu( Menu *m );
+	void PopMenu();
 
 	Entity *FindEntityInCurrentLevel( const char *name );
 };

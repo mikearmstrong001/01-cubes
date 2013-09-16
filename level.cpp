@@ -136,69 +136,13 @@ bool Level::Load( const char * filename )
 		KVStore const &ent = ents->Get( i );
 
 		Entity *s = (Entity *)CoreClassCreator::Create( ent.GetKeyValueString( "classname" ) );
+		s->OnSetWorld( m_world );
 		s->Spawn( ent );
 		s->OnAddToLevel( this );
 		m_entities.push_back( s );
 	}
 
 	initMapMesh( m_mesh );
-	//makeMapMesh( m_mesh, &m_map, 1.f );
-#if 0
-	FILE *f = fopen( "level1.ents", "wb" );
-	{
-		Entity *s = (Entity *)CoreClassCreator::Create( "Player" );
-		KVStore kv;
-		kv.AddKeyValueString( "classname", "Player" );
-		kv.AddKeyValueString( "mesh", "dwarf.am" );
-		kv.AddKeyValueString( "pos", "128 128 64" );
-		kv.AddKeyValueString( "name", "player0" );
-		s->Spawn( kv );
-		s->OnAddToLevel( this );
-		m_entities.push_back( s );
-
-		std::string o;
-		kv.Dump( o );
-		fprintf( f, "{\n%s}\n", o.c_str() );
-	}
-
-	for (unsigned int i=0; i<50; i++)
-	{
-		Entity *s = (Entity *)CoreClassCreator::Create( "Zombie" );
-		KVStore kv;
-		kv.AddKeyValueString( "classname", "Zombie" );
-		kv.AddKeyValueString( "mesh", "zombie.am" );
-		char temp[512];
-		sprintf( temp, "%d %d %d", rand()%512, rand()%512, 64 );
-		kv.AddKeyValueString( "pos", temp );
-		s->Spawn( kv );
-		s->OnAddToLevel( this );
-		m_entities.push_back( s );
-
-		std::string o;
-		kv.Dump( o );
-		fprintf( f, "{\n%s}\n", o.c_str() );
-	}
-
-	for (unsigned int i=0; i<scenery.size(); i++)
-	{
-		Entity *s = (Entity *)CoreClassCreator::Create( "Scenery" );
-		KVStore kv;
-		kv.AddKeyValueString( "classname", "Scenery" );
-		kv.AddKeyValueString( "mesh", "pine.am" );
-		char temp[512];
-		sprintf( temp, "%f %f %f", scenery[i].x, scenery[i].y, scenery[i].z );
-		kv.AddKeyValueString( "pos", temp );
-		s->Spawn( kv );
-		s->OnAddToLevel( this );
-		m_entities.push_back( s );
-
-		std::string o;
-		kv.Dump( o );
-		fprintf( f, "{\n%s}\n", o.c_str() );
-	}
-	fclose( f );
-#endif
-
 	m_timeMS = 0;
 
 	return true;

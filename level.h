@@ -38,6 +38,8 @@ public:
 	Level();
 	~Level();
 
+	void SetWorld( World *w ) { m_world = w; }
+
 	void AddFixed( Entity* ent );
 	void AddDelta( Entity* ent );
 	void AddGui( Entity* ent );

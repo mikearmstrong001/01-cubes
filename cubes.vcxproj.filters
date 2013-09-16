@@ -76,6 +76,15 @@
     <ClCompile Include="craft.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="workbench.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="workbench_menu.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="anim.h">
@@ -145,6 +154,15 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="craft.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="workbench.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="workbench_menu.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
