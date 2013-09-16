@@ -1,6 +1,6 @@
 #pragma once
 
-#include <map>
+#include <vector>
 #include "misc.h"
 
 
@@ -23,7 +23,16 @@ protected:
 		};
 	};
 
-	std::map<Guid,Value> m_store;
+public:
+	struct KeyValue
+	{
+		Guid k;
+		Value v;
+	};
+
+protected:
+	//std::map<Guid,Value> m_store;
+	std::vector<KeyValue> m_store;
 	static std::map<Guid,std::string> s_keymap;
 
 	void AddKeyValueKeyValue( const char *k, const KVStore *v );

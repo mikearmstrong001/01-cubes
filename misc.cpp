@@ -155,6 +155,15 @@ bool ParseToken( std::string &token, const char *&s )
 			s++;
 			return true;
 		} else
+		if ( *s == '-' && isoneof( s[1], "0123456789" ) )
+		{
+			while ( *s && !isspace( *s ) )
+			{
+				token.push_back( *s );
+				s++;
+			}
+			return true;
+		} else
 		if ( isoneof( *s, "{}[]()+-*/&^%$£<>" ) )
 		{
 			token.push_back( *s );

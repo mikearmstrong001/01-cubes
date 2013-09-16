@@ -3,6 +3,41 @@
 
 std::map<Guid,std::string> KVStore::s_keymap;
 
+static KVStore::KeyValue &AddItem( Guid const &g, std::vector<KVStore::KeyValue> &keys )
+{
+	for (unsigned int i=0; i<keys.size(); i++)
+	{
+		if ( keys[i].k == g )
+			return keys[i];
+	}
+	keys.push_back( KVStore::KeyValue() );
+	return keys.back();
+}
+
+static std::vector<KVStore::KeyValue>::iterator Find( std::vector<KVStore::KeyValue> &keys, const Guid &g )
+{
+	std::vector<KVStore::KeyValue>::iterator b = keys.begin();
+	while ( b != keys.end() )
+	{
+		if ( b->k == g )
+			return b;
+		b++;
+	}
+	return keys.end();
+}
+
+static std::vector<KVStore::KeyValue>::const_iterator Find( std::vector<KVStore::KeyValue> const &keys, const Guid &g )
+{
+	std::vector<KVStore::KeyValue>::const_iterator b = keys.begin();
+	while ( b != keys.end() )
+	{
+		if ( b->k == g )
+			return b;
+		b++;
+	}
+	return keys.end();
+}
+
 void KVStore::Parse( KVStore *kv, const char *&cursor )
 {
 	std::string token;
@@ -57,10 +92,10 @@ void KVStore::Parse( const char *&cursor )
 
 void KVStore::Clear()
 {
-	std::map<Guid,Value>::iterator b = m_store.begin();
+	std::vector<KeyValue>::iterator b = m_store.begin();
 	while ( b != m_store.end() )
 	{
-		Value &v = b->second;
+		Value &v = b->v;
 		
 		if ( v.type == KVTString )
 			free( (void*)v.str );
@@ -82,9 +117,10 @@ void KVStore::AddKeyValueKeyValue( const char *k, const KVStore *v )
 
 void KVStore::AddKeyValueKeyValue( const Guid &g, const KVStore *v )
 {
-	Value &val = m_store[g];
-	val.type = KVTStore;
-	val.store = v;
+	KeyValue &val = AddItem( g, m_store );
+	val.k = g;
+	val.v.type = KVTStore;
+	val.v.store = v;
 }
 
 void KVStore::AddKeyValueString( const char *k, const char *v )
@@ -97,20 +133,21 @@ void KVStore::AddKeyValueString( const char *k, const char *v )
 
 void KVStore::AddKeyValueString( const Guid &g, const char *v )
 {
-	Value &val = m_store[g];
-	val.type = KVTString;
-	val.str = strdup( v );
+	KeyValue &val = AddItem( g, m_store );
+	val.k = g;
+	val.v.type = KVTString;
+	val.v.str = strdup( v );
 }
 
 const char *KVStore::GetKeyValueString( const char *k, const char *def ) const
 {
 	Guid g;
 	GenerateGUID( g, k );
-	std::map<Guid,Value>::const_iterator b = m_store.find(g);
+	std::vector<KeyValue>::const_iterator b = Find(m_store,g);
 	if ( b == m_store.cend() )
 		return def;
 	
-	Value const &v = b->second;
+	Value const &v = b->v;
 	if ( v.type == KVTString )
 	{
 		return v.str;
@@ -123,11 +160,11 @@ float KVStore::GetKeyValueFloat( const char *k, float def ) const
 {
 	Guid g;
 	GenerateGUID( g, k );
-	std::map<Guid,Value>::const_iterator b = m_store.find(g);
+	std::vector<KeyValue>::const_iterator b = Find(m_store,g);
 	if ( b == m_store.cend() )
 		return def;
 	
-	Value const &v = b->second;
+	Value const &v = b->v;
 	if ( v.type == KVTString )
 		return (float)atof(v.str);
 
@@ -138,11 +175,11 @@ int KVStore::GetKeyValueInt( const char *k, int def ) const
 {
 	Guid g;
 	GenerateGUID( g, k );
-	std::map<Guid,Value>::const_iterator b = m_store.find(g);
+	std::vector<KeyValue>::const_iterator b = Find(m_store,g);
 	if ( b == m_store.cend() )
 		return def;
 	
-	Value const &v = b->second;
+	Value const &v = b->v;
 	if ( v.type == KVTString )
 		return (int)floor(atof(v.str));
 
@@ -153,12 +190,12 @@ void KVStore::GetKeyValueFloatArray( float *out, int num, const char *k ) const
 {
 	Guid g;
 	GenerateGUID( g, k );
-	std::map<Guid,Value>::const_iterator b = m_store.find(g);
+	std::vector<KeyValue>::const_iterator b = Find(m_store,g);
 	memset( out, 0, sizeof(float)*num );
 	if ( b == m_store.cend() )
 		return;
 	
-	Value const &v = b->second;
+	Value const &v = b->v;
 	if ( v.type == KVTString )
 	{
 		const char *cursor = v.str;
@@ -178,7 +215,7 @@ bool KVStore::HasKey( const char *k ) const
 {
 	Guid g;
 	GenerateGUID( g, k );
-	std::map<Guid,Value>::const_iterator b = m_store.find(g);
+	std::vector<KeyValue>::const_iterator b = Find(m_store,g);
 	if ( b == m_store.cend() )
 		return false;
 
@@ -187,15 +224,15 @@ bool KVStore::HasKey( const char *k ) const
 
 void KVStore::Dump( std::string &output ) const
 {
-	std::map<Guid,Value>::const_iterator b = m_store.begin();
+	std::vector<KeyValue>::const_iterator b = m_store.begin();
 	while ( b != m_store.cend() )
 	{
-		std::string key = s_keymap[ b->first ];
+		std::string key = s_keymap[ b->k ];
 
 		output.append( "\t\"" );
 		output.append( key );
 		output.append( "\" \"" );
-		output.append( b->second.str );
+		output.append( b->v.str );
 		output.append( "\"\n" );
 		b++;
 	}
@@ -205,15 +242,15 @@ void KVStore::Dump( std::string &output ) const
 
 void KVStore::MergeInto( KVStore const &other )
 {
-	std::map<Guid,Value>::const_iterator b = other.m_store.begin();
+	std::vector<KeyValue>::const_iterator b = other.m_store.begin();
 	while ( b != other.m_store.cend() )
 	{
-		std::map<Guid,Value>::const_iterator f = m_store.find(b->first);
+		std::vector<KeyValue>::const_iterator f = Find(m_store,b->k);
 		if ( f == m_store.cend() )
 		{
-			Value const &v = b->second;
+			Value const &v = b->v;
 			if ( v.type == KVTString )
-				AddKeyValueString( b->first, v.str );
+				AddKeyValueString( b->k, v.str );
 		}
 		b++;
 	}
