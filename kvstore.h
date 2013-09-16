@@ -39,6 +39,7 @@ protected:
 	void AddKeyValueKeyValue( const Guid &g, const KVStore *v );
 
 	static void Parse( KVStore *kv, const char *&cursor );
+	static void ParseArray( KVStore *kv, const char *&cursor );
 
 public:
 
@@ -58,6 +59,13 @@ public:
 	void GetKeyValueFloatArray( float *out, int num, const char *k ) const;
 	int GetKeyValueInt( const char *k, int def = 0 ) const;
 	const KVStore *GetKeyValueKeyValue( const char *k ) const;
+
+	int GetNumItems() const;
+	const char *GetIndexValueString( int index, const char *def = "" ) const;
+	float GetIndexValueFloat( int index, float def = 0.f ) const;
+	void GetIndexValueFloatArray( float *out, int num, int index ) const;
+	int GetIndexValueInt( int index, int def = 0 ) const;
+	const KVStore *GetIndexValueKeyValue( int index ) const;
 
 	bool HasKey( const char *k ) const;
 

@@ -54,9 +54,43 @@ void KVStore::Parse( KVStore *kv, const char *&cursor )
 			kv->AddKeyValueKeyValue( key.c_str(), store );
 		}
 		else
+		if ( value == "[" )
+		{
+			KVStore *store = new KVStore;
+			ParseArray( store, cursor );
+			kv->AddKeyValueKeyValue( key.c_str(), store );
+		}
+		else
 		{
 			kv->AddKeyValueString( key.c_str(), value.c_str() );
 		}
+	}
+}
+
+void KVStore::ParseArray( KVStore *kv, const char *&cursor )
+{
+	int index = 0;
+	std::string value;
+	while ( ParseToken( value, cursor ) && value != "]" )
+	{
+		if ( value == "{" )
+		{
+			KVStore *store = new KVStore;
+			Parse( store, cursor );
+			kv->AddKeyValueKeyValue( Guid(index), store );
+		}
+		else
+		if ( value == "[" )
+		{
+			KVStore *store = new KVStore;
+			ParseArray( store, cursor );
+			kv->AddKeyValueKeyValue( Guid(index), store );
+		}
+		else
+		{
+			kv->AddKeyValueString( Guid(index), value.c_str() );
+		}
+		index++;
 	}
 }
 
@@ -204,12 +238,81 @@ void KVStore::GetKeyValueFloatArray( float *out, int num, const char *k ) const
 			std::string tok;
 			if ( !ParseToken( tok, cursor ) )
 				break;
-			out[i] = atof( tok.c_str() );
+			out[i] = (float)atof( tok.c_str() );
 		}
 	}
 }
 
+int KVStore::GetNumItems() const
+{
+	return (int)m_store.size();
+}
 
+const char *KVStore::GetIndexValueString( int index, const char *def ) const
+{
+	if ( index < 0 || index >= (int)m_store.size() )
+		return def;
+
+	KeyValue const &kv = m_store[index];
+	if ( kv.v.type == KVTString )
+		return kv.v.str;
+	return def;
+}
+
+float KVStore::GetIndexValueFloat( int index, float def ) const
+{
+	if ( index < 0 || index >= (int)m_store.size() )
+		return def;
+
+	KeyValue const &kv = m_store[index];
+	if ( kv.v.type == KVTString )
+		return (float)atof(kv.v.str);
+	return def;
+}
+
+void KVStore::GetIndexValueFloatArray( float *out, int num, int index ) const
+{
+	memset( out, 0, sizeof(float)*num);
+	if ( index < 0 || index >= (int)m_store.size() )
+		return;
+
+	KeyValue const &kv = m_store[index];
+	Value const &v = kv.v;
+	if ( v.type == KVTString )
+	{
+		const char *cursor = v.str;
+		for (int i=0; i<num; i++)
+		{
+			std::string tok;
+			if ( !ParseToken( tok, cursor ) )
+				break;
+			out[i] = (float)atof( tok.c_str() );
+		}
+	}
+}
+
+int KVStore::GetIndexValueInt( int index, int def ) const
+{
+	if ( index < 0 || index >= (int)m_store.size() )
+		return def;
+
+	KeyValue const &kv = m_store[index];
+	if ( kv.v.type == KVTString )
+		return (int)floor(atof(kv.v.str));
+	return def;
+}
+
+const KVStore *KVStore::GetIndexValueKeyValue( int index ) const
+{
+	static KVStore empty;
+	if ( index < 0 || index >= (int)m_store.size() )
+		return &empty;
+
+	KeyValue const &kv = m_store[index];
+	if ( kv.v.type == KVTStore )
+		return kv.v.store;
+	return &empty;
+}
 
 bool KVStore::HasKey( const char *k ) const
 {
