@@ -6,6 +6,7 @@
 class Level;
 class World;
 class KVStore;
+class EntityDef;
 
 class Entity : public CoreClass
 {
@@ -26,6 +27,8 @@ protected:
 	AnimMeshInstance m_meshInstance;
 	std::string m_name;
 
+	const EntityDef *m_entityDef;
+
 public:
 
 	Entity();
@@ -33,6 +36,10 @@ public:
 
 	virtual void Spawn( KVStore const &kv );
 	virtual void Clear();
+
+	void SetEntityDef( const EntityDef *edef ) { m_entityDef = edef; }
+	const EntityDef *GetEntityDef( void ) { return m_entityDef; }
+	World *GetWorld() { return m_world; }
 
 	virtual void OnSetWorld( World *w );
 	virtual void OnAddToLevel( Level *l );

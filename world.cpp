@@ -41,6 +41,11 @@ void World::UpdateBegin()
 	if ( m_curLevel == -1 )
 		return;
 
+	if ( m_menus.size() )
+	{
+		m_menus.top()->Update();
+	}
+
 	m_levels[m_curLevel]->UpdateBegin();
 }
 

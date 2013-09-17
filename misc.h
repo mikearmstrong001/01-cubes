@@ -65,7 +65,7 @@ inline bool IsTypeOf( CoreType const *a, CoreType const *b )
 template <class A, class B>
 inline A *CoreCast( B *ptr )
 {
-	if ( &IsTypeOf( &B::s_Type, &A::s_Type ) )
+	if ( IsTypeOf( &A::s_Type, &B::s_Type ) )
 		return (A*)ptr;
 	return NULL;
 }

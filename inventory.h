@@ -6,7 +6,6 @@
 
 class InventoryItemDef : public KVStore
 {
-	std::string m_guiName;
 public:
 
 	virtual void Reload();
@@ -25,14 +24,16 @@ InventoryItemDefMgr *InventoryItemDefManager();
 
 // ------------------------
 
-class InventoryItem
+struct InventoryItem
 {
-	std::string m_type;
-	float quatity;
+	const InventoryItemDef *def;
+	float quantity;
 };
 
 class Inventory
 {
 	std::vector< InventoryItem > m_items;
 public:
+
+	void Give( const InventoryItemDef *def, float quantity );
 };

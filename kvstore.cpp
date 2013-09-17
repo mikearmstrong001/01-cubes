@@ -257,6 +257,23 @@ void KVStore::GetKeyValueFloatArray( float *out, int num, const char *k ) const
 	}
 }
 
+const KVStore *KVStore::GetKeyValueKeyValue( const char *k ) const
+{
+	static KVStore empty;
+	Guid g;
+	GenerateGUID( g, k );
+	std::vector<KeyValue>::const_iterator b = Find(m_store,g);
+	if ( b == m_store.cend() )
+		return &empty;
+	
+	Value const &v = b->v;
+	if ( v.type == KVTStore )
+		return v.store;
+
+	return &empty;
+}
+
+
 int KVStore::GetNumItems() const
 {
 	return (int)m_store.size();

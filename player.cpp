@@ -25,6 +25,7 @@ void Player::OnRemoveFromLevel( Level *l )
 void Player::Spawn( KVStore const &kv )
 {
 	Super::Spawn(kv);
+	m_input = true;
 }
 
 #include <Windows.h>
@@ -33,58 +34,59 @@ void Player::UpdateDelta( float dt )
 	Super::PreDeltaUpdate(dt);
 	Super::UpdateDelta(dt);
 
-	if ( GetAsyncKeyState( VK_LEFT ) < 0 )
-		m_rotz += 1.f * dt;
-	if ( GetAsyncKeyState( VK_RIGHT ) < 0 )
-		m_rotz -= 1.f * dt;
-
 	m_animDir = 0.f;
-	if ( GetAsyncKeyState( 'W' ) < 0 )
+	if ( m_input )
 	{
-		m_animDir = 1.f;
-		m_vel[0] = sinf(m_rotz) * dt;
-		m_vel[1] = cosf(m_rotz) * dt;
-	}
-	if ( GetAsyncKeyState( 'S' ) < 0 )
-	{
-		m_animDir = -1.f;
-		m_vel[0] = -sinf(m_rotz) * dt;
-		m_vel[1] = -cosf(m_rotz) * dt;
-	}
-	if ( GetAsyncKeyState( 'A' ) < 0 )
-	{
-		m_vel[0] =  cosf(m_rotz) * dt;
-		m_vel[1] = -sinf(m_rotz) * dt;
-	}
-	if ( GetAsyncKeyState( 'D' ) < 0 )
-	{
-		m_vel[0] = -cosf(m_rotz) * dt;
-		m_vel[1] =  sinf(m_rotz) * dt;
-	}
-	
-	if ( m_stateIndex == 0 && GetAsyncKeyState( VK_SPACE ) & 1 )
-	{
-		m_animTime = 0.f;
-		m_stateIndex = 1;
-	}
-
-	if ( m_stateIndex == 0 && GetAsyncKeyState( 'E' ) & 1 )
-	{
-		std::vector<Entity*> usables;
-		m_level->FindEntities( usables, m_pos, 1.f, Entity::s_Type );
-		for (unsigned int i=0; i<usables.size(); i++)
+		if ( GetAsyncKeyState( VK_LEFT ) < 0 )
+			m_rotz += 1.f * dt;
+		if ( GetAsyncKeyState( VK_RIGHT ) < 0 )
+			m_rotz -= 1.f * dt;
+		if ( GetAsyncKeyState( 'W' ) < 0 )
 		{
-			if ( usables[i]->Use( this ) )
+			m_animDir = 1.f;
+			m_vel[0] = sinf(m_rotz) * dt;
+			m_vel[1] = cosf(m_rotz) * dt;
+		}
+		if ( GetAsyncKeyState( 'S' ) < 0 )
+		{
+			m_animDir = -1.f;
+			m_vel[0] = -sinf(m_rotz) * dt;
+			m_vel[1] = -cosf(m_rotz) * dt;
+		}
+		if ( GetAsyncKeyState( 'A' ) < 0 )
+		{
+			m_vel[0] =  cosf(m_rotz) * dt;
+			m_vel[1] = -sinf(m_rotz) * dt;
+		}
+		if ( GetAsyncKeyState( 'D' ) < 0 )
+		{
+			m_vel[0] = -cosf(m_rotz) * dt;
+			m_vel[1] =  sinf(m_rotz) * dt;
+		}
+	
+		if ( m_stateIndex == 0 && GetAsyncKeyState( VK_SPACE ) & 1 )
+		{
+			m_animTime = 0.f;
+			m_stateIndex = 1;
+		}
+
+		if ( m_stateIndex == 0 && GetAsyncKeyState( 'E' ) & 1 )
+		{
+			std::vector<Entity*> usables;
+			m_level->FindEntities( usables, m_pos, 1.f, Entity::s_Type );
+			for (unsigned int i=0; i<usables.size(); i++)
 			{
-				break;
-				//m_level->RemoveEntity( pickups[i] );
+				if ( usables[i]->Use( this ) )
+				{
+					break;
+				}
 			}
 		}
-	}
 
-	if ( GetAsyncKeyState( VK_LSHIFT ) < 0 && m_onGround )
-	{
-		m_vel[2] = 0.6f;
+		if ( GetAsyncKeyState( VK_LSHIFT ) < 0 && m_onGround )
+		{
+			m_vel[2] = 0.6f;
+		}
 	}
 
 #if 0

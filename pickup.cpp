@@ -3,6 +3,8 @@
 #include "fpumath.h"
 #include "misc.h"
 #include "player.h"
+#include "entitydef.h"
+#include "inventory.h"
 
 static ClassCreator<Pickup> s_PickupCreator( "Pickup" );
 CoreType Pickup::s_Type( &Pickup::Super::s_Type );
@@ -54,5 +56,26 @@ void Pickup::UpdateDelta( float dt )
 
 bool Pickup::Use( Entity *by )
 {
-	return ( IsTypeOf( by->Type(), &Player::s_Type ) );
+	Player *p = CoreCast<Player>(by);
+	if ( p )
+	{
+		Inventory &inv = p->GetInventory();
+		const KVStore *kv = m_entityDef->GetKeyValueKeyValue( "give" );
+		for (int i=0; i<kv->GetNumItems(); i++)
+		{
+			const KVStore *item = kv->GetIndexValueKeyValue( i );
+			const InventoryItemDef *itemDef = InventoryItemDefManager()->Get( item->GetKeyValueString( "item", "unknown" ) );
+			float amount = item->GetKeyValueInt( "amount", 1.f );
+			if ( itemDef )
+			{
+				inv.Give( itemDef, amount );
+			}
+		}
+		m_level->RemoveEntity( this );
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

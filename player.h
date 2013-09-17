@@ -1,12 +1,20 @@
 #pragma once
 
 #include "actor.h"
+#include "inventory.h"
 
 class Player : public Actor
 {
 	typedef Actor Super;
 
+	bool m_input;
+	Inventory m_inventory;
+
 public:
+
+	void SetInput( bool tf ) { m_input = tf; }
+	
+	Inventory  &GetInventory() { return m_inventory; }
 
 	void OnAddToLevel( Level *l );
 	void OnRemoveFromLevel( Level *l );

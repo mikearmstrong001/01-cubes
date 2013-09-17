@@ -135,7 +135,9 @@ bool Level::Load( const char * filename )
 	{
 		KVStore const &ent = ents->Get( i );
 
+		const EntityDef *edef = EntityDefManager()->Get( ent.GetKeyValueString( "template" ) );
 		Entity *s = (Entity *)CoreClassCreator::Create( ent.GetKeyValueString( "classname" ) );
+		s->SetEntityDef( edef );
 		s->OnSetWorld( m_world );
 		s->Spawn( ent );
 		s->OnAddToLevel( this );
