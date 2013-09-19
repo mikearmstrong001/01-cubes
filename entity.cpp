@@ -70,6 +70,10 @@ bool Entity::Use( Entity *by )
 	return false;
 }
 
+void Entity::FinishUsing( Entity *by )
+{
+}
+
 void Entity::Attack( Entity *by )
 {
 }

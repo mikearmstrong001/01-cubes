@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include "misc.h"
+#include "entity.h"
 
 struct particleIniter_s
 {
@@ -13,7 +15,7 @@ struct particleGraph_s
 	std::vector< float > data;
 };
 
-struct particleDef_s
+struct ParticleDef
 {
 	int maxParticles;
 	int totalParticles;
@@ -28,6 +30,13 @@ struct particleDef_s
 	particleGraph_s  sizeByLife;
 	particleGraph_s  orbitRadiusByLife;
 	particleGraph_s  orbitAngleByLife;
+
+//public:
+
+	bool Load( const char *filename );
+	void Reload();
+	void Clear();
+
 };
 
 struct particleSystem_s
@@ -37,7 +46,7 @@ struct particleSystem_s
 	float spawnErr;
 	float emitterLife;
 
-	particleDef_s *def;
+	const ParticleDef *def;
 
 	std::vector< float > pos;
 	std::vector< float > vel;
@@ -48,9 +57,33 @@ struct particleSystem_s
 
 void initParticleDecl();
 
-void initParticleSystem( particleSystem_s &ps, const char *filename );
-bool updateParticleSystem( particleSystem_s &ps, float dt );
-void renderParticleSystem( particleSystem_s &ps );
+class ParticleDefMgr : public TypedDefMgr<ParticleDef>
+{
 
-void reloadParticleSystems();
+public:
 
+};
+
+ParticleDefMgr *ParticleDefManager();
+
+
+
+class ParticleEntity : public Entity
+{
+	typedef Entity Super;
+
+	particleSystem_s m_psys;
+
+public:
+
+	void OnAddToLevel( Level *l );
+	void OnRemoveFromLevel( Level *l );
+
+	void Spawn( KVStore const &kv );
+	void UpdateDelta( float dt );
+	void Render();
+
+	static CoreType s_Type;
+	virtual CoreType const *Type() const { return &s_Type; }
+	virtual CoreType const *SuperType() const { return &Super::s_Type; }
+};

@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <bgfx.h>
+#include "level.h"
 
 static bgfx::VertexDecl s_PosColorDecl;
 
@@ -15,15 +16,6 @@ void initParticleDecl()
 	s_PosColorDecl.add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Uint8, true);
 	s_PosColorDecl.end();
 }
-
-struct PosColorVertex
-{
-	float m_x;
-	float m_y;
-	float m_z;
-	uint32_t m_abgr;
-};
-
 
 static PosColorVertex s_cubeVertices[8] =
 {
@@ -54,8 +46,6 @@ static const uint16_t s_cubeIndices[36] =
 };
 
 
-static std::map< std::string, particleDef_s* > s_definitions;
-
 static bool loadGraph( particleGraph_s &graph, int numElements, FILE *f )
 {
 	char line[2048];
@@ -81,7 +71,7 @@ static bool loadGraph( particleGraph_s &graph, int numElements, FILE *f )
 	return true;
 }
 
-static void sampleGraph( float *o, particleGraph_s &graph, float t )
+static void sampleGraph( float *o, const particleGraph_s &graph, float t )
 {
 	unsigned int index = 0;
 	unsigned int entries = graph.data.size() / (graph.numElements+1);
@@ -98,8 +88,8 @@ static void sampleGraph( float *o, particleGraph_s &graph, float t )
 	}
 	else
 	{
-		float *cur = &graph.data[ (index-1)*(graph.numElements+1) ];
-		float *next = &graph.data[ (index)*(graph.numElements+1) ];
+		const float *cur = &graph.data[ (index-1)*(graph.numElements+1) ];
+		const float *next = &graph.data[ (index)*(graph.numElements+1) ];
 		float dt = (t-cur[0]) / (next[0] - cur[0]);
 		float omdt = 1.f - dt;
 		for (int i=0; i<graph.numElements; i++)
@@ -118,29 +108,33 @@ static bool loadRange( particleIniter_s &range, FILE *f )
 	return res > 0;
 }
 
-static bool loadSystem( particleDef_s &def, const char *filename )
+bool ParticleDef::Load( const char *filename )
 {
 	bool ok = true;
-	memset( &def, 0, sizeof(def) );
 	FILE *f = fopen( filename, "rb" );
 	if ( f )
 	{
-		ok &= (fscanf( f, "%d %d %f\n", &def.maxParticles, &def.totalParticles, &def.spawnRate ) == 3);
+		ok &= (fscanf( f, "%d %d %f\n", &maxParticles, &totalParticles, &spawnRate ) == 3);
 
-		ok &= loadRange( def.posInit, f );
-		ok &= loadRange( def.velInit, f );
-		ok &= loadRange( def.accInit, f );
-		ok &= loadRange( def.lifeInit, f );
-		ok &= loadRange( def.emitterLifeInit, f );
-		ok &= loadGraph( def.sizeByLife, 1, f ); 
-		ok &= loadGraph( def.orbitRadiusByLife, 1, f ); 
-		ok &= loadGraph( def.orbitAngleByLife, 1, f ); 
+		ok &= loadRange( posInit, f );
+		ok &= loadRange( velInit, f );
+		ok &= loadRange( accInit, f );
+		ok &= loadRange( lifeInit, f );
+		ok &= loadRange( emitterLifeInit, f );
+		ok &= loadGraph( sizeByLife, 1, f ); 
+		ok &= loadGraph( orbitRadiusByLife, 1, f ); 
+		ok &= loadGraph( orbitAngleByLife, 1, f ); 
 	}
 
-	if ( !ok )
-		memset( &def, 0, sizeof(def) );
-
 	return ok;
+}
+
+void ParticleDef::Reload()
+{
+}
+
+void ParticleDef::Clear()
+{
 }
 
 static float particleRand( float mn, float mx )
@@ -154,7 +148,7 @@ static inline float saturate( float d )
 	return d < 0.f ? 0.f : d > 1.f ? 1.f : d;
 }
 
-static void initFromRange( float *dst, particleIniter_s &range, int numEle )
+static void initFromRange( float *dst, const particleIniter_s &range, int numEle )
 {
 	for (int i=0; i<numEle; i++)
 	{
@@ -164,16 +158,7 @@ static void initFromRange( float *dst, particleIniter_s &range, int numEle )
 
 void initParticleSystem( particleSystem_s &ps, const char *filename )
 {
-	memset( &ps.def, 0, sizeof(ps.def) );
-	if ( s_definitions.find( filename ) == s_definitions.end() )
-	{
-		particleDef_s *def = new particleDef_s;
-		if ( loadSystem( *def, filename ) )
-		{
-			s_definitions[filename] = def;
-		}
-	}
-	ps.def = s_definitions[filename];
+	ps.def = ParticleDefManager()->Get(filename);
 	ps.spawnErr = 0.f;
 	ps.numParticles = 0;
 	ps.totalParticles = 0;
@@ -186,7 +171,7 @@ void initParticleSystem( particleSystem_s &ps, const char *filename )
 }
 
 
-bool updateParticleSystem( particleSystem_s &ps, float dt )
+static bool updateParticleSystem( particleSystem_s &ps, float dt )
 {
 	if ( ps.def == NULL )
 		return false;
@@ -198,7 +183,7 @@ bool updateParticleSystem( particleSystem_s &ps, float dt )
 		while ( ps.spawnErr >= 1.f )
 		{
 			ps.spawnErr -= 1.f;
-			if ( ps.numParticles < ps.def->maxParticles && ps.totalParticles < ps.def->totalParticles )
+			if ( ps.numParticles < ps.def->maxParticles && (ps.totalParticles < ps.def->totalParticles || ps.def->totalParticles == 0 ) )
 			{
 				initFromRange( &ps.pos[ps.numParticles*3], ps.def->posInit, 3 );
 				initFromRange( &ps.vel[ps.numParticles*3], ps.def->velInit, 3 );
@@ -318,12 +303,52 @@ void renderParticleSystem( particleSystem_s &ps )
 }
 
 
-void reloadParticleSystems()
+ParticleDefMgr *ParticleDefManager()
 {
-	std::map<std::string,particleDef_s*>::iterator b = s_definitions.begin();
-	while ( b != s_definitions.end() )
+	static ParticleDefMgr s_mgr;
+	return &s_mgr;
+}
+
+
+static ClassCreator<ParticleEntity> s_PlayerCreator( "Particle" );
+CoreType ParticleEntity::s_Type( &ParticleEntity::Super::s_Type );
+
+
+void ParticleEntity::OnAddToLevel( Level *l )
+{
+	Super::OnAddToLevel( l );
+
+	l->AddRender( this );
+	l->AddDelta( this );
+}
+
+void ParticleEntity::OnRemoveFromLevel( Level *l )
+{
+	l->RemoveDelta( this );
+	l->RemoveRender( this );
+
+	Super::OnRemoveFromLevel( l );
+}
+
+void ParticleEntity::Spawn( KVStore const &kv )
+{
+	Super::Spawn( kv );
+
+	initParticleSystem( m_psys, kv.GetKeyValueString( "particle" ) );
+}
+
+void ParticleEntity::UpdateDelta( float dt )
+{
+	Super::UpdateDelta(dt);
+
+	if ( !updateParticleSystem( m_psys, dt ) )
 	{
-		loadSystem( *b->second, b->first.c_str() );
-		b++;
+		m_level->RemoveEntity( this );
 	}
+}
+
+void ParticleEntity::Render()
+{
+	bgfx::setTransform(m_wmtx);
+	renderParticleSystem( m_psys );
 }

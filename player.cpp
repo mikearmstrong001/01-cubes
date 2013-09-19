@@ -6,9 +6,79 @@
 #include "pickup.h"
 #include "fpumath.h"
 #include "gui.h"
+#include "world.h"
 
 static ClassCreator<Player> s_PlayerCreator( "Player" );
 CoreType Player::s_Type( &Player::Super::s_Type );
+
+
+#include "menu.h"
+#include <Windows.h>
+
+class Entity;
+
+class PlayerInventoryMenu : public Menu
+{
+	Player *m_player;
+	int m_cursor;
+public:
+
+	PlayerInventoryMenu( Player *p );
+
+	void Update();
+	void Render();
+};
+
+PlayerInventoryMenu::PlayerInventoryMenu( Player *p ) : m_player(p), m_cursor(0)
+{
+	p->SetInput( false );
+}
+
+void PlayerInventoryMenu::Update()
+{
+	Inventory &inv = m_player->GetInventory();
+	if ( GetAsyncKeyState( VK_LEFT ) & 1 )
+	{
+		m_cursor = (m_cursor - 1 + inv.GetNumItems()) % inv.GetNumItems();
+	}
+	else if ( GetAsyncKeyState( VK_RIGHT ) & 1 )
+	{
+		m_cursor = (m_cursor + 1 + inv.GetNumItems()) % inv.GetNumItems();
+	}
+	else if ( GetAsyncKeyState( VK_DELETE ) & 1 )
+	{
+		m_player->SetInput( true );
+		m_player->GetWorld()->PopMenu();
+	}
+}
+
+void PlayerInventoryMenu::Render()
+{
+	int num = 5;
+	float size = 80.f; 
+	float border = 5.f;
+	float spacing = size+border+border;
+	Inventory &inv = m_player->GetInventory();
+
+	guiDrawRoundedRect( (1280.f/2) - (num/2.f) * spacing - 10.f, 720 - 10.f - spacing - 10.f, num * spacing + 20.f, spacing + 20.f, 10.f, guiColourRGBA( 64, 64, 64, 255 ) );
+	for (int i=0; i<num; i++)
+	{
+		int offset = i - (num-1)/2;
+		int index = m_cursor + i - (num-1)/2;
+		if ( index < 0 )
+			continue;
+		if ( index >= inv.GetNumItems() )
+			continue;
+		float x = ((1280.f-spacing)/2) + offset * spacing + border;
+		float y = 720 - 10.f - spacing + border;
+		guiDrawRoundedRect( x, y, size, size, 5.f, guiColourRGBA( 16, 16, 16, 255 ) );
+
+		const InventoryItem &item = inv.GetItem( index );
+		const char *gui = item.def->GetKeyValueString( "gui" );
+		guiDrawText( x+size/2.f, y+size/2.f, gui, GUI_ALIGNX_CENTER, GUI_ALIGNY_CENTER, guiColourRGBA( 200, 200, 200, 255 ) );	
+	}
+}
+
 
 void Player::OnAddToLevel( Level *l )
 {
@@ -28,7 +98,6 @@ void Player::Spawn( KVStore const &kv )
 	m_input = true;
 }
 
-#include <Windows.h>
 void Player::UpdateDelta( float dt )
 {
 	Super::PreDeltaUpdate(dt);
@@ -86,6 +155,11 @@ void Player::UpdateDelta( float dt )
 		if ( GetAsyncKeyState( VK_LSHIFT ) < 0 && m_onGround )
 		{
 			m_vel[2] = 0.6f;
+		}
+
+		if ( m_stateIndex == 0 && GetAsyncKeyState( 'I' ) & 1 )
+		{
+			m_world->PushMenu( new PlayerInventoryMenu( this ) );
 		}
 	}
 

@@ -15,6 +15,7 @@ public:
 	void Spawn( KVStore const &kv );
 
 	bool Use( Entity *by );
+	void FinishUsing( Entity *by );
 
 	static CoreType s_Type;
 	virtual CoreType const *Type() const { return &s_Type; }

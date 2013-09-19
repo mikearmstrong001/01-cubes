@@ -36,3 +36,8 @@ bool Workbench::Use( Entity *by )
 	m_active = true;
 	return true;
 }
+
+void Workbench::FinishUsing( Entity * /*by*/ )
+{
+	m_active = false;
+}

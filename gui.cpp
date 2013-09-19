@@ -538,3 +538,4 @@ void guiDrawText(float _x, float _y, const char* _text, guiTextAlignX _alignX, g
 		bgfx::submit(1);
 	}
 }
+

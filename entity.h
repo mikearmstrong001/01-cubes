@@ -46,6 +46,7 @@ public:
 	virtual void OnRemoveFromLevel( Level *l );
 
 	virtual bool Use( Entity *by );
+	virtual void FinishUsing( Entity *by );
 	virtual void Attack( Entity *by );
 
 	virtual void UpdateFixed( float dt );

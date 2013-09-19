@@ -36,4 +36,8 @@ class Inventory
 public:
 
 	void Give( const InventoryItemDef *def, float quantity );
+	bool CanTake( const InventoryItemDef *def, float quantity ) const;
+	void Take( const InventoryItemDef *def, float quantity );
+	int  GetNumItems() const { return (int)m_items.size(); }
+	InventoryItem const &GetItem( int index );
 };

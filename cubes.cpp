@@ -449,11 +449,6 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 
 			error -= time;
 		
-			if ( GetAsyncKeyState( 'Y' ) & 1 )
-				initParticleSystem( testps, "explode.psys" );
-
-			updateParticleSystem( testps, 1.f/60.f );
-
 			imguiEndFrame();
 
 	// render

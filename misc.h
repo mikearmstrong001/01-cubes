@@ -23,6 +23,16 @@ bool isoneof( char c, const char *possible );
 const char *firstof( const char *s, const char *possible );
 const char *firstnotof( const char *s, const char *possible );
 
+inline float Min( float a, float b )
+{
+	return a < b ? a : b;
+}
+
+inline float Max( float a, float b )
+{
+	return a > b ? a : b;
+}
+
 #pragma warning(push)
 #pragma warning(disable: 4127)
 
