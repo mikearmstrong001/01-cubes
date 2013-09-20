@@ -16,6 +16,9 @@ char *skipws( char *txt );
 bool ParseString( std::string &i, const char *&cursor );
 bool ParseInt( int &i, const char *&cursor );
 bool ParseFloat( float &f, const char *&cursor );
+bool ParseExpect( const std::string &expect, const char *&cursor );
+bool ParseTest( const std::string &expect, const char *&cursor );
+bool ParseEOF( const char *cursor );
 
 bool ParseToken( std::string &token, const char *&s );
 

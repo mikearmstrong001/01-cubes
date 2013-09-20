@@ -46,13 +46,11 @@ static const uint16_t s_cubeIndices[36] =
 };
 
 
-static bool loadGraph( particleGraph_s &graph, int numElements, FILE *f )
+static bool loadGraph( particleGraph_s &graph, int numElements, const char *&cursor )
 {
-	char line[2048];
-	fgets( line, sizeof(line), f );
-	const char *cursor = line;
+	bool ok = true;
 	int num;
-	ParseInt( num, cursor );
+	ok &= ParseInt( num, cursor );
 
 	graph.numElements = numElements;
 	graph.data.reserve( num * (numElements+1) );
@@ -60,15 +58,15 @@ static bool loadGraph( particleGraph_s &graph, int numElements, FILE *f )
 	for (int i=0; i<num; i++)
 	{
 		float v;
-		ParseFloat( v, cursor );
+		ok &= ParseFloat( v, cursor );
 		graph.data.push_back( v );
 		for (int j=0; j<numElements; j++)
 		{
-			ParseFloat( v, cursor );
+			ok &= ParseFloat( v, cursor );
 			graph.data.push_back( v );
 		}
 	}
-	return true;
+	return ok;
 }
 
 static void sampleGraph( float *o, const particleGraph_s &graph, float t )
@@ -97,15 +95,20 @@ static void sampleGraph( float *o, const particleGraph_s &graph, float t )
 	}
 }
 
-static bool loadRange( particleIniter_s &range, FILE *f )
+static bool loadRange( particleIniter_s &range, const char * &cursor )
 {
-	char line[1024];
-	fgets( line, sizeof(line), f );
-	int res = sscanf( line, "{ %f %f } { %f %f } { %f %f }\n", &range.range[0][0], &range.range[1][0], 
-		&range.range[0][1], &range.range[1][1], 
-		&range.range[0][2], &range.range[1][2] );
+	bool ok = true;
+	for (int i=0; i<3; i++)
+	{
+		if ( ParseEOF( cursor ) )
+			break;
+		ok &= ParseExpect( "{", cursor );
+		ok &= ParseFloat( range.range[0][i], cursor );
+		ok &= ParseFloat( range.range[1][i], cursor );
+		ok &= ParseExpect( "}", cursor );
+	}
 
-	return res > 0;
+	return ok;
 }
 
 bool ParticleDef::Load( const char *filename )
@@ -114,16 +117,37 @@ bool ParticleDef::Load( const char *filename )
 	FILE *f = fopen( filename, "rb" );
 	if ( f )
 	{
-		ok &= (fscanf( f, "%d %d %f\n", &maxParticles, &totalParticles, &spawnRate ) == 3);
-
-		ok &= loadRange( posInit, f );
-		ok &= loadRange( velInit, f );
-		ok &= loadRange( accInit, f );
-		ok &= loadRange( lifeInit, f );
-		ok &= loadRange( emitterLifeInit, f );
-		ok &= loadGraph( sizeByLife, 1, f ); 
-		ok &= loadGraph( orbitRadiusByLife, 1, f ); 
-		ok &= loadGraph( orbitAngleByLife, 1, f ); 
+		char line[2048];
+		while ( fgets(line,sizeof(line),f ) )
+		{
+			const char *cursor = line;
+			std::string token;
+			if ( ParseToken( token, cursor ) )
+			{
+				if ( token == "max" )
+					ok &= ParseInt( maxParticles, cursor );
+				else if ( token == "total" )
+					ok &= ParseInt( totalParticles, cursor );
+				else if ( token == "rate" )
+					ok &= ParseFloat( spawnRate, cursor );
+				else if ( token == "pos" )
+					ok &= loadRange( posInit, cursor );
+				else if ( token == "vel" )
+					ok &= loadRange( velInit, cursor );
+				else if ( token == "acc" )
+					ok &= loadRange( accInit, cursor );
+				else if ( token == "plife" )
+					ok &= loadRange( lifeInit, cursor );
+				else if ( token == "elife" )
+					ok &= loadRange( emitterLifeInit, cursor );
+				else if ( token == "size" )
+					ok &= loadGraph( sizeByLife, 1, cursor ); 
+				else if ( token == "orbitRadius" )
+					ok &= loadGraph( orbitRadiusByLife, 1, cursor ); 
+				else if ( token == "orbitAngle" )
+					ok &= loadGraph( orbitAngleByLife, 1, cursor ); 
+			}
+		}
 	}
 
 	return ok;

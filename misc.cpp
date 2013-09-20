@@ -202,6 +202,33 @@ bool ParseString( std::string &i, const char *&cursor )
 	return ParseToken( i, cursor );
 }
 
+bool ParseExpect( const std::string &expect, const char *&cursor )
+{
+	std::string token;
+	ParseToken( token, cursor );
+	return token == expect;
+}
+
+bool ParseTest( const std::string &expect, const char *&cursor )
+{
+	const char *backup = cursor;
+	std::string token;
+	ParseToken( token, backup );
+	if ( token == expect )
+	{
+		cursor = backup;
+		return true;
+	}
+	return false;
+}
+
+bool ParseEOF( const char *cursor )
+{
+	std::string token;
+	return !ParseToken( token, cursor );
+}
+
+
 bool ParseInt( int &i, const char *&cursor )
 {
 	std::string tok;
