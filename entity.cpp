@@ -7,14 +7,12 @@
 
 CoreType Entity::s_Type( &Entity::Super::s_Type );
 
-bgfx::UniformHandle u_flash;//  = BGFX_INVALID_HANDLE;//bgfx::createUniform("u_time",     bgfx::UniformType::Uniform1f);
+extern bgfx::UniformHandle u_flash;
+extern bgfx::TextureHandle g_whiteTexture;
+extern bgfx::UniformHandle u_tex;
 
 Entity::Entity() : m_level(NULL), m_world(NULL), m_meshDef(NULL)
 {
-	if ( u_flash.idx == bgfx::invalidHandle )// BGFX_INVALID_HANDLE )
-	{
-		u_flash = bgfx::createUniform("u_flash",     bgfx::UniformType::Uniform1f);
-	}
 }
 
 Entity::~Entity()
@@ -86,6 +84,7 @@ void Entity::UpdateDelta( float dt )
 {
 }
 
+#include "gui.h"
 void Entity::UpdateAttachment()
 {
 	if ( m_attachName.empty() )
@@ -107,6 +106,7 @@ void Entity::Render()
 		flash = 1.f;
 	}
 	bgfx::setUniform( u_flash, &flash, 1 );
+	bgfx::setTexture(0, u_tex, g_whiteTexture);
 	renderMesh( *m_meshDef->GetMesh(), m_meshInstance, m_wmtx );
 }
 

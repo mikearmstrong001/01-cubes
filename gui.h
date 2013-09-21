@@ -28,6 +28,7 @@ void guiDrawRoundedRect(float _x, float _y, float w, float h, float r, unsigned 
 void guiDrawLine(float _x0, float _y0, float _x1, float _y1, float _r, unsigned int _abgr, float _fth = 1.0f);
 void guiDrawTriangle(float _x, float _y, float _width, float _height, int _flags, unsigned int _abgr);
 void guiDrawText(float _x, float _y, const char* _text, guiTextAlignX _alignX, guiTextAlignY _alignY, unsigned int _abgr);
+void guiDrawText3d(float pos[3], float xaxis[3], float zaxis[3], const char* _text, guiTextAlignX _alignX, guiTextAlignY _alignY, unsigned int _abgr);
 
 
 

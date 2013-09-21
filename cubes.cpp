@@ -304,7 +304,11 @@ void avoidThink( entitystate_s *self, map_s *map, float dt )
 	move( self->pos, self->vel, map );
 #endif
 }
-extern bgfx::UniformHandle u_flash;
+
+bgfx::UniformHandle u_flash;
+bgfx::TextureHandle g_whiteTexture;
+bgfx::UniformHandle u_tex;
+
 #include <Windows.h>
 int _main_(int /*_argc*/, char** /*_argv*/)
 {
@@ -362,6 +366,10 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 		break;
 	}
 
+	const bgfx::Memory* whiteTexMem = bgfx::alloc(4 * 4 * 4);
+	memset( whiteTexMem->data, 0xff, whiteTexMem->size );
+	g_whiteTexture = bgfx::createTexture2D(4, 4, 1, bgfx::TextureFormat::BGRA8, BGFX_TEXTURE_NONE, whiteTexMem);
+
 	initParticleDecl();
 	initMeshDecl();
 	guiInit();
@@ -378,6 +386,7 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 	// Load fragment shader.
 	mem = loadShader("fs_cubes");
 	u_flash = bgfx::createUniform("u_flash",     bgfx::UniformType::Uniform1f);
+	u_tex = bgfx::createUniform("u_tex", bgfx::UniformType::Uniform1i);
 
 	bgfx::FragmentShaderHandle fsh = bgfx::createFragmentShader(mem);
 

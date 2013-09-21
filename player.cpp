@@ -132,6 +132,16 @@ void Player::UpdateDelta( float dt )
 			m_vel[0] = -cosf(m_rotz) * dt;
 			m_vel[1] =  sinf(m_rotz) * dt;
 		}
+		if ( GetAsyncKeyState( 'O' ) < 0 )
+		{
+			char posstring[32];
+			sprintf( posstring, "%f %f %f", m_pos[0], m_pos[1], m_pos[2] + 1.f );
+			KVStore spawner;
+			spawner.AddKeyValueString( "template", "Hitpoint" );
+			spawner.AddKeyValueString( "pos", posstring );
+			spawner.AddKeyValueString( "gui", "test" );
+			m_level->Spawn( spawner );
+		}
 	
 		if ( m_stateIndex == 0 && GetAsyncKeyState( VK_SPACE ) & 1 )
 		{

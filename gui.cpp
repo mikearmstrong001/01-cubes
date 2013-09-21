@@ -539,3 +539,196 @@ void guiDrawText(float _x, float _y, const char* _text, guiTextAlignX _alignX, g
 	}
 }
 
+static void getBakedQuad3d(stbtt_bakedchar* _chardata, int32_t char_index, float* _xpos, float* _ypos, float scale, stbtt_aligned_quad* _quad)
+{
+	stbtt_bakedchar* b = _chardata + char_index;
+	float round_x = *_xpos + b->xoff * scale;
+	float round_y = *_ypos - (b->yoff) * scale;
+
+	_quad->x0 = (float)round_x;
+	_quad->y0 = (float)round_y;
+	_quad->x1 = (float)round_x + (b->x1 - b->x0) * scale;
+	_quad->y1 = (float)round_y + ((b->y1 - b->y0)) * scale;
+
+	_quad->s0 = (b->x0 + m_halfTexel) * m_invTextureWidth;
+	_quad->t0 = (b->y0 + m_halfTexel) * m_invTextureWidth;
+	_quad->s1 = (b->x1 + m_halfTexel) * m_invTextureHeight;
+	_quad->t1 = (b->y1 + m_halfTexel) * m_invTextureHeight;
+
+	*_xpos += b->xadvance * scale;
+}
+
+static float getTextLength3d(stbtt_bakedchar* _chardata, const char* _text, float scale, uint32_t& _numVertices)
+{
+	float xpos = 0;
+	float len = 0;
+	uint32_t numVertices = 0;
+
+	while (*_text)
+	{
+		int32_t ch = (uint8_t)*_text;
+		if (ch == '\t')
+		{
+			for (int32_t ii = 0; ii < 4; ++ii)
+			{
+				if (xpos < s_tabStops[ii] * scale)
+				{
+					xpos = s_tabStops[ii] * scale;
+					break;
+				}
+			}
+		}
+		else if (ch >= ' '
+				&&  ch < 128)
+		{
+			stbtt_bakedchar* b = _chardata + ch - ' ';
+			float round_x = xpos + b->xoff * scale;
+			len = round_x + (b->x1 - b->x0)*scale;
+			xpos += b->xadvance * scale;
+			numVertices += 6;
+		}
+
+		++_text;
+	}
+
+	_numVertices = numVertices;
+
+	return len;
+}
+
+static float getTextHeight3d(stbtt_bakedchar* _chardata,float scale)
+{
+#if 1
+	return 15.f * scale;
+#else
+	stbtt_bakedchar* b = _chardata + 'W' - ' ';
+	return b->y1 - b->y0;
+#endif
+}
+
+
+extern bgfx::UniformHandle u_flash;
+extern bgfx::TextureHandle g_whiteTexture;
+extern bgfx::UniformHandle u_tex;
+
+inline void calcpos( PosColorVertex *vertex, float x, float y, float pos[3], float xaxis[3], float zaxis[3] )
+{
+	vertex->m_x = pos[0] + x * xaxis[0] - y * zaxis[0];
+	vertex->m_y = pos[1] + x * xaxis[1] - y * zaxis[1];
+	vertex->m_z = pos[2] + x * xaxis[2] - y * zaxis[2];
+}
+
+extern bgfx::VertexDecl s_PosColorDecl;
+void guiDrawText3d(float pos[3], float xaxis[3], float zaxis[3], const char* _text, guiTextAlignX _alignX, guiTextAlignY _alignY, unsigned int _abgr)
+{
+	if (!_text)
+	{
+		return;
+	}
+
+	float _x = 0.f;
+	float _z = 0.f;
+	uint32_t numVertices = 0;
+	if (_alignX == GUI_ALIGNX_CENTER)
+	{
+		_x -= getTextLength(m_cdata, _text, numVertices) / 2;
+	}
+	else if (_alignX == GUI_ALIGNX_RIGHT)
+	{
+		_x -= getTextLength(m_cdata, _text, numVertices);
+	}
+	else // just count vertices
+	{
+		getTextLength(m_cdata, _text, numVertices);
+	}
+
+	if (_alignY == GUI_ALIGNY_CENTER)
+	{
+		_z += getTextHeight(m_cdata) / 2;
+	}
+	else if (_alignY == GUI_ALIGNY_TOP)
+	{
+		_z += getTextHeight(m_cdata);
+	}
+
+	if (bgfx::checkAvailTransientVertexBuffer(numVertices, m_decl) )
+	{
+		bgfx::TransientVertexBuffer tvb;
+		bgfx::allocTransientVertexBuffer(&tvb, numVertices, s_PosColorDecl);
+
+		PosColorVertex* vertex = (PosColorVertex*)tvb.data;
+
+		const float ox = _x;
+
+		while (*_text)
+		{
+			int32_t ch = (uint8_t)*_text;
+			if (ch == '\t')
+			{
+				for (int32_t i = 0; i < 4; ++i)
+				{
+					if (_x < (s_tabStops[i]) + ox)
+					{
+						_x = (s_tabStops[i]) + ox;
+						break;
+					}
+				}
+			}
+			else if (ch >= ' '
+					&&  ch < 128)
+			{
+				stbtt_aligned_quad quad;
+				getBakedQuad(m_cdata, ch - 32, &_x, &_z, &quad);
+
+				calcpos( vertex, quad.x0, quad.y0, pos, xaxis, zaxis );
+				vertex->m_u = quad.s0;
+				vertex->m_v = quad.t0;
+				vertex->m_abgr = _abgr;
+				++vertex;
+
+				calcpos( vertex, quad.x1, quad.y1, pos, xaxis, zaxis );
+				vertex->m_u = quad.s1;
+				vertex->m_v = quad.t1;
+				vertex->m_abgr = _abgr;
+				++vertex;
+
+				calcpos( vertex, quad.x1, quad.y0, pos, xaxis, zaxis );
+				vertex->m_u = quad.s1;
+				vertex->m_v = quad.t0;
+				vertex->m_abgr = _abgr;
+				++vertex;
+
+				calcpos( vertex, quad.x0, quad.y0, pos, xaxis, zaxis );
+				vertex->m_u = quad.s0;
+				vertex->m_v = quad.t0;
+				vertex->m_abgr = _abgr;
+				++vertex;
+
+				calcpos( vertex, quad.x0, quad.y1, pos, xaxis, zaxis );
+				vertex->m_u = quad.s0;
+				vertex->m_v = quad.t1;
+				vertex->m_abgr = _abgr;
+				++vertex;
+
+				calcpos( vertex, quad.x1, quad.y1, pos, xaxis, zaxis );
+				vertex->m_u = quad.s1;
+				vertex->m_v = quad.t1;
+				vertex->m_abgr = _abgr;
+				++vertex;
+			}
+
+			++_text;
+		}
+
+		bgfx::setTexture(0, u_tex, m_fontTexture);
+		bgfx::setVertexBuffer(&tvb);
+		bgfx::setState(0
+			| BGFX_STATE_RGB_WRITE
+			| BGFX_STATE_DEPTH_TEST_LESS
+			//| BGFX_STATE_ALPHA_WRITE
+			| BGFX_STATE_BLEND_FUNC(BGFX_STATE_BLEND_SRC_ALPHA, BGFX_STATE_BLEND_INV_SRC_ALPHA)
+			);
+		//bgfx::setProgram(m_textureProgram);
+		bgfx::submit(0);
+	}
+}

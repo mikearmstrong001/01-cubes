@@ -40,6 +40,8 @@ public:
 
 	void SetWorld( World *w ) { m_world = w; }
 
+	void Spawn( KVStore const &kv );
+
 	void AddFixed( Entity* ent );
 	void AddDelta( Entity* ent );
 	void AddGui( Entity* ent );

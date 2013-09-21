@@ -5,6 +5,17 @@
 #include <map>
 #include <string>
 
+struct PosColorVertex
+{
+	float m_x;
+	float m_y;
+	float m_z;
+	float m_u;
+	float m_v;
+	unsigned int m_abgr;
+};
+
+
 typedef unsigned int Guid;
 
 void GenerateGUID( Guid &g, const char *str );

@@ -6,6 +6,10 @@
 #include "kvstore.h"
 #include "fpumath.h"
 
+extern bgfx::UniformHandle u_flash;
+extern bgfx::TextureHandle g_whiteTexture;
+extern bgfx::UniformHandle u_tex;
+
 struct sceneryobject_s
 {
 	float x, y, z;
@@ -47,6 +51,23 @@ Level::~Level()
 {
 	Clear();
 }
+
+void Level::Spawn( KVStore const &spawn )
+{
+	const EntityDef *edef = EntityDefManager()->Get( spawn.GetKeyValueString( "template" ) );
+
+	KVStore kv;
+	kv.MergeInto( spawn );
+	kv.MergeInto( *edef );
+
+	Entity *s = (Entity *)CoreClassCreator::Create( kv.GetKeyValueString( "classname" ) );
+	s->SetEntityDef( edef );
+	s->OnSetWorld( m_world );
+	s->Spawn( kv );
+	s->OnAddToLevel( this );
+	m_entities.push_back( s );
+}
+
 
 void Level::AddFixed( Entity* ent )
 {
@@ -228,7 +249,6 @@ void Level::Render()
 {
 	makeMapMesh( m_mesh, &m_map, 1.f );
 	renderMesh( m_mesh );
-
 	UpdateContainer::iterator b = m_renderUpdate.begin();
 	while ( b != m_renderUpdate.end() )
 	{

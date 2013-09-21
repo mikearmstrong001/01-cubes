@@ -5,13 +5,18 @@
 #include "kv6.h"
 #include "cub.h"
 
-static bgfx::VertexDecl s_PosColorDecl;
+
+extern bgfx::UniformHandle u_flash;
+extern bgfx::TextureHandle g_whiteTexture;
+extern bgfx::UniformHandle u_tex;
+bgfx::VertexDecl s_PosColorDecl;
 
 void initMeshDecl()
 {
 	// Create vertex stream declaration.
 	s_PosColorDecl.begin();
 	s_PosColorDecl.add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float);
+	s_PosColorDecl.add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float);
 	s_PosColorDecl.add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Uint8, true);
 	s_PosColorDecl.end();
 }
@@ -20,14 +25,14 @@ void initMeshDecl()
 
 static PosColorVertex s_cubeVertices[8] =
 {
-	{ 0.0f,  1.0f,  1.0f, 0xff000000 },
-	{ 1.0f,  1.0f,  1.0f, 0xff0000ff },
-	{ 0.0f,  0.0f,  1.0f, 0xff00ff00 },
-	{ 1.0f,  0.0f,  1.0f, 0xff00ffff },
-	{ 0.0f,  1.0f,  0.0f, 0xffff0000 },
-	{ 1.0f,  1.0f,  0.0f, 0xffff00ff },
-	{ 0.0f,  0.0f,  0.0f, 0xffffff00 },
-	{ 1.0f,  0.0f,  0.0f, 0xffffffff },
+	{ 0.0f,  1.0f,  1.0f, 0.f, 0.f, 0xff000000 },
+	{ 1.0f,  1.0f,  1.0f, 0.f, 0.f, 0xff0000ff },
+	{ 0.0f,  0.0f,  1.0f, 0.f, 0.f, 0xff00ff00 },
+	{ 1.0f,  0.0f,  1.0f, 0.f, 0.f, 0xff00ffff },
+	{ 0.0f,  1.0f,  0.0f, 0.f, 0.f, 0xffff0000 },
+	{ 1.0f,  1.0f,  0.0f, 0.f, 0.f, 0xffff00ff },
+	{ 0.0f,  0.0f,  0.0f, 0.f, 0.f, 0xffffff00 },
+	{ 1.0f,  0.0f,  0.0f, 0.f, 0.f, 0xffffffff },
 };
 
 static const uint16_t s_cubeIndices[36] =
@@ -114,6 +119,8 @@ void makeMesh( Mesh *mesh, map_s *map, float scale, int *from, int *to )
 					vtx.m_x *= scale;
 					vtx.m_y *= scale;
 					vtx.m_z *= scale;
+					vtx.m_u = 0.f;
+					vtx.m_v = 0.f;
 					vtx.m_abgr = map->colour[index];
 					verts.push_back( vtx );
 				}
@@ -145,6 +152,10 @@ void renderMesh( Mesh &mesh )
 {
 	for (uint32_t s=0; s<mesh.m_subsets.size(); s++)
 	{
+		float flash = 0.f;
+		bgfx::setUniform( u_flash, &flash, 1 );
+		bgfx::setTexture(0, u_tex, g_whiteTexture);
+
 		// Set vertex and index buffer.
 		bgfx::setVertexBuffer(mesh.m_subsets[s].vbh);
 		bgfx::setIndexBuffer(mesh.m_subsets[s].ibh);

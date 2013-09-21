@@ -5,28 +5,33 @@
 #include <string>
 #include <bgfx.h>
 #include "level.h"
+#include "gui.h"
 
 static bgfx::VertexDecl s_PosColorDecl;
+extern bgfx::UniformHandle u_flash;
+extern bgfx::TextureHandle g_whiteTexture;
+extern bgfx::UniformHandle u_tex;
 
 void initParticleDecl()
 {
 	// Create vertex stream declaration.
 	s_PosColorDecl.begin();
 	s_PosColorDecl.add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float);
+	s_PosColorDecl.add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float);
 	s_PosColorDecl.add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Uint8, true);
 	s_PosColorDecl.end();
 }
 
 static PosColorVertex s_cubeVertices[8] =
 {
-	{ 0.0f,  1.0f,  1.0f, 0xff000000 },
-	{ 1.0f,  1.0f,  1.0f, 0xff0000ff },
-	{ 0.0f,  0.0f,  1.0f, 0xff00ff00 },
-	{ 1.0f,  0.0f,  1.0f, 0xff00ffff },
-	{ 0.0f,  1.0f,  0.0f, 0xffff0000 },
-	{ 1.0f,  1.0f,  0.0f, 0xffff00ff },
-	{ 0.0f,  0.0f,  0.0f, 0xffffff00 },
-	{ 1.0f,  0.0f,  0.0f, 0xffffffff },
+	{ 0.0f,  1.0f,  1.0f, 0.f, 0.f, 0xff000000 },
+	{ 1.0f,  1.0f,  1.0f, 0.f, 0.f, 0xff0000ff },
+	{ 0.0f,  0.0f,  1.0f, 0.f, 0.f, 0xff00ff00 },
+	{ 1.0f,  0.0f,  1.0f, 0.f, 0.f, 0xff00ffff },
+	{ 0.0f,  1.0f,  0.0f, 0.f, 0.f, 0xffff0000 },
+	{ 1.0f,  1.0f,  0.0f, 0.f, 0.f, 0xffff00ff },
+	{ 0.0f,  0.0f,  0.0f, 0.f, 0.f, 0xffffff00 },
+	{ 1.0f,  0.0f,  0.0f, 0.f, 0.f, 0xffffffff },
 };
 
 static const uint16_t s_cubeIndices[36] =
@@ -298,6 +303,8 @@ void renderParticleSystem( particleSystem_s &ps )
 				verts->m_x = pos[0] + s_cubeVertices[j].m_x * size;
 				verts->m_y = pos[1] + s_cubeVertices[j].m_y * size;
 				verts->m_z = pos[2] + s_cubeVertices[j].m_z * size;
+				verts->m_u = s_cubeVertices[j].m_u;
+				verts->m_v = s_cubeVertices[j].m_v;
 				verts->m_abgr = s_cubeVertices[j].m_abgr;
 				verts++;
 			}
@@ -307,7 +314,9 @@ void renderParticleSystem( particleSystem_s &ps )
 				*indices++ = (uint16_t)(s_cubeIndices[j] + baseVert);
 			}
 		}
-
+		float flash = 0.f;
+		bgfx::setUniform( u_flash, &flash, 1 );
+		bgfx::setTexture(0, u_tex, g_whiteTexture);
 		bgfx::setVertexBuffer(&tvb);
 		bgfx::setIndexBuffer(&tib);
 
@@ -375,4 +384,58 @@ void ParticleEntity::Render()
 {
 	bgfx::setTransform(m_wmtx);
 	renderParticleSystem( m_psys );
+}
+
+
+static ClassCreator<HitpointEntity> s_HitpointEntityCreator( "Hitpoint" );
+CoreType HitpointEntity::s_Type( &HitpointEntity::Super::s_Type );
+
+
+void HitpointEntity::OnAddToLevel( Level *l )
+{
+	Super::OnAddToLevel( l );
+
+	l->AddRender( this );
+	l->AddDelta( this );
+}
+
+void HitpointEntity::OnRemoveFromLevel( Level *l )
+{
+	l->RemoveDelta( this );
+	l->RemoveRender( this );
+
+	Super::OnRemoveFromLevel( l );
+}
+
+void HitpointEntity::Spawn( KVStore const &kv )
+{
+	Super::Spawn( kv );
+	m_text = kv.GetKeyValueString( "gui" );
+	m_time = kv.GetKeyValueFloat( "time" );
+	kv.GetKeyValueFloatArray( m_vel, 3, "vel" );
+}
+
+void HitpointEntity::UpdateDelta( float dt )
+{
+	Super::UpdateDelta(dt);
+
+	m_time -= dt;
+	m_pos[0] += m_vel[0] * dt;
+	m_pos[1] += m_vel[1] * dt;
+	m_pos[2] += m_vel[2] * dt;
+
+	if ( m_time < 0.f )
+	{
+		m_level->RemoveEntity( this );
+	}
+}
+
+void HitpointEntity::Render()
+{
+	float ident[16];
+	mtxIdentity( ident );
+	bgfx::setTransform(ident);
+	float xaxis[3] = { 0.5f/15.f, 0.f, 0.f };
+	float zaxis[3] = { 0.f, 0.f,  0.5f/15.f };
+	guiDrawText3d( m_pos, xaxis, zaxis, m_text.c_str(), GUI_ALIGNX_CENTER, GUI_ALIGNY_CENTER, guiColourRGBA( 0, 0, 255, 255 ) );
 }

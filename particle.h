@@ -87,3 +87,25 @@ public:
 	virtual CoreType const *Type() const { return &s_Type; }
 	virtual CoreType const *SuperType() const { return &Super::s_Type; }
 };
+
+class HitpointEntity : public Entity
+{
+	typedef Entity Super;
+
+	float m_time;
+	std::string m_text;
+	float m_vel[3];
+
+public:
+
+	void OnAddToLevel( Level *l );
+	void OnRemoveFromLevel( Level *l );
+
+	void Spawn( KVStore const &kv );
+	void UpdateDelta( float dt );
+	void Render();
+
+	static CoreType s_Type;
+	virtual CoreType const *Type() const { return &s_Type; }
+	virtual CoreType const *SuperType() const { return &Super::s_Type; }
+};
