@@ -85,6 +85,9 @@
     <ClCompile Include="workbench_menu.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="graphics.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="anim.h">
@@ -163,6 +166,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="workbench_menu.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

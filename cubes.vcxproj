@@ -1571,6 +1571,7 @@
     </ClCompile>
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="entitydef.cpp" />
+    <ClCompile Include="graphics.cpp" />
     <ClCompile Include="gui.cpp" />
     <ClCompile Include="inventory.cpp" />
     <ClCompile Include="kv6.cpp" />
@@ -1607,6 +1608,7 @@
     <ClInclude Include="cub.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="entitydef.h" />
+    <ClInclude Include="graphics.h" />
     <ClInclude Include="gui.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="kv6.h" />

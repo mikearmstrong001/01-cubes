@@ -148,13 +148,17 @@ void makeMesh( Mesh *mesh, map_s *map, float scale, int *from, int *to )
 	}
 }
 
+#include "graphics.h"
 void renderMesh( Mesh &mesh )
 {
+	const MaterialDef *mtr = MaterialDefManager()->Get( "basic" );
 	for (uint32_t s=0; s<mesh.m_subsets.size(); s++)
 	{
 		float flash = 0.f;
-		bgfx::setUniform( u_flash, &flash, 1 );
-		bgfx::setTexture(0, u_tex, g_whiteTexture);
+		//bgfx::setUniform( u_flash, &flash, 1 );
+		//bgfx::setTexture(0, u_tex, g_whiteTexture);
+		mtr->Bind();
+		mtr->BindPass(0, &flash);
 
 		// Set vertex and index buffer.
 		bgfx::setVertexBuffer(mesh.m_subsets[s].vbh);

@@ -47,7 +47,7 @@ public:
 	virtual ~KVStore();
 
 	virtual bool Load( const char *filename );
-	virtual void Parse( const char *&cursor );
+	virtual void Parse( const char *name, const char *&cursor );
 	virtual void Clear();
 
 	void AddKeyValueString( const char *k, const char *v );

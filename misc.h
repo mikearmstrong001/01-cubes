@@ -259,7 +259,7 @@ public:
 					if ( token == "{" )
 					{
 						T *def = new T;
-						def->Parse( cursor );
+						def->Parse( name.c_str(), cursor );
 						Guid g;
 						GenerateGUID( g, name.c_str() );
 						m_defs[g] = def;

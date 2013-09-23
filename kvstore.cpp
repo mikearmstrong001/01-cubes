@@ -110,7 +110,7 @@ bool KVStore::Load( const char *filename )
 	if ( f )
 	{
 		const char *cursor = f;
-		Parse( cursor );
+		Parse( filename, cursor );
 		return true;
 	}
 	else
@@ -119,7 +119,7 @@ bool KVStore::Load( const char *filename )
 	}
 }
 
-void KVStore::Parse( const char *&cursor )
+void KVStore::Parse( const char *name, const char *&cursor )
 {
 	Parse( this, cursor );
 }

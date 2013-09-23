@@ -33,6 +33,7 @@
 #include "inventory.h"
 #include "world.h"
 #include "player.h"
+#include "graphics.h"
 
 static const char* s_shaderPath = NULL;
 
@@ -68,243 +69,6 @@ static const bgfx::Memory* loadShader(const char* _name)
 }
 
 
-struct entityattach_s
-{
-	int ent;
-	std::string name;
-};
-
-struct entitystate_s
-{
-	entityattach_s attach;
-
-	AnimMesh mesh;
-	float pos[3];
-	float rotz;
-	float wmtx[16];
-
-	float vel[3];
-	
-	float animTime;
-
-	int weaponIndex;
-
-	float animDir;
-	bool onGround;
-
-	int stateIndex;
-	float stateTime;
-	float noProgress;
-	float moveSpeed;
-
-	unsigned int collisionMask;
-	int collisionHeight;
-	entitystate_s *voxelNext;
-
-	void (*fixedupdate)( entitystate_s *self, map_s *map, float dt );
-	void (*deltaupdate)( entitystate_s *self, map_s *map, float dt );
-	void (*guiupdate)( entitystate_s *self, map_s *map );
-	void (*render)( entitystate_s *self, map_s *map );
-};
-
-
-void grenadeThink( entitystate_s *self, map_s *map, float dt )
-{
-#if 0
-	self->vel[2] -= 9.8f * dt;
-	HitInfo_s hi;
-	if ( IntersectRay( hi, self->pos, self->vel, map, (unsigned int)(~(0x1|0x4)) ) )
-	{
-		int f[3] = { (int)(self->pos[0] - 3.f), (int)(self->pos[1] - 3.f), (int)(self->pos[2] - 2.f) };
-		int t[3] = { (int)(self->pos[0] + 3.f), (int)(self->pos[1] + 3.f), (int)(self->pos[2] + 2.f) };
-		clearMap( map, mapMesh, f, t );
-		self->fixedupdate = NULL;
-		self->deltaupdate = NULL;
-	}
-	else
-	{
-		self->pos[0] += self->vel[0];
-		self->pos[1] += self->vel[1];
-		self->pos[2] += self->vel[2];
-	}
-#endif
-}
-
-void zombieThink( entitystate_s *self, map_s *map, float dt )
-{
-#if 0
-	// wander
-	if ( self->moveSpeed < 0.001f && self->onGround )
-	{
-		self->noProgress -= 1.f;
-	}
-	if ( self->noProgress < 0.f )
-	{
-		// quick check for player
-		self->rotz += 3.14f;
-		self->noProgress = 5 * 60.f;
-		self->stateIndex = 0;
-	}
-	float moveSpeed = 1.f;
-	if ( self->stateIndex == 0 )
-	{
-		self->stateTime -= 1.f;
-		if ( self->stateTime < 0.f )
-		{
-			self->rotz += ((rand() % 3) - 1) * 0.2f;
-			self->stateTime = (float)(rand() % 100);
-
-			entitystate_s *playerOne = &entities[0];
-
-			float delta[3];
-			vec3Sub( delta, playerOne->pos, self->pos );
-			float distSq = vec3LenSq( delta );
-			if ( distSq < (16.f*16.f) )
-			{
-				float lookDir[3] = {sinf(self->rotz), cosf(self->rotz), 0.f};
-				float dp = vec3Dot( lookDir, delta );
-				if ( dp > 0.f )
-				{
-					self->rotz = atan2f( delta[0], delta[1] );
-					self->stateIndex = 1;
-				}
-			}
-		}
-	}
-	else
-	if ( self->stateIndex == 1 )
-	{
-		float delta[3];
-		entitystate_s *playerOne = &entities[0];
-		vec3Sub( delta, playerOne->pos, self->pos );
-		float distSq = vec3LenSq( delta );
-		if ( distSq < (32.f*32.f) )
-		{
-			float lookDir[3] = {sinf(self->rotz), cosf(self->rotz), 0.f};
-			float dp = vec3Dot( lookDir, delta );
-			if ( dp > 0.f )
-			{
-				self->rotz = atan2f( delta[0], delta[1] );
-				moveSpeed *= 3.f;
-				if ( distSq < 1.f )
-				{
-					self->stateIndex = 2;
-					self->stateTime = 50.f;
-				}
-			}
-			else
-			{
-				self->stateIndex = 0;
-			}
-		}
-		else
-		{
-			self->stateIndex = 0;
-		}
-	}
-	else
-	if ( self->stateIndex == 2 )
-	{
-		moveSpeed = 0.f;
-		self->stateTime -= 1.f;
-		if ( self->stateTime < 0.f )
-		{
-			int f[3] = { (int)(self->pos[0] - 4.f), (int)(self->pos[1] - 4.f), (int)(self->pos[2] - 2.f) };
-			int t[3] = { (int)(self->pos[0] + 4.f), (int)(self->pos[1] + 4.f), (int)(self->pos[2] + 2.f) };
-			clearMap( map, mapMesh, f, t );
-			self->stateIndex = 3;
-			self->fixedupdate = NULL;
-			self->deltaupdate = NULL;
-		}
-	}
-	else
-	if ( self->stateIndex == 3 )
-	{
-		moveSpeed = 0.f;
-	}
-
-	self->animDir = 1.f;
-	if ( self->onGround )
-	{
-		self->vel[0] = moveSpeed*sinf(self->rotz)*dt;
-		self->vel[1] = moveSpeed*cosf(self->rotz)*dt;
-	}
-
-	animUpdate( self, "walk" );
-
-	move( self->pos, self->vel, map );
-#endif
-}
-
-void nothingThink( entitystate_s * /*self*/, map_s * /*map*/, float /*dt*/ )
-{
-}
-
-void avoidThink( entitystate_s *self, map_s *map, float dt )
-{
-#if 0
-	// wander
-	if ( self->moveSpeed < 0.001f && self->onGround )
-	{
-		self->noProgress -= 1.f;
-	}
-	if ( self->noProgress < 0.f )
-	{
-		// quick check for player
-		self->rotz += 3.14f;
-		self->noProgress = 5 * 60.f;
-		self->stateIndex = 0;
-	}
-	float moveSpeed = 1.f;
-	if ( self->stateIndex == 0 )
-	{
-		self->stateTime -= 1.f;
-		if ( self->stateTime < 0.f )
-		{
-			self->rotz += ((rand() % 3) - 1) * 0.2f;
-			self->stateTime = (float)(rand() % 100);
-
-			float delta[3];
-			entitystate_s *playerOne = &entities[0];
-			vec3Sub( delta, playerOne->pos, self->pos );
-			float distSq = vec3LenSq( delta );
-			if ( distSq < (16.f*16.f) )
-			{
-				float lookDir[3] = {sinf(self->rotz), cosf(self->rotz), 0.f};
-				float dp = vec3Dot( lookDir, delta );
-				if ( dp > 0.f )
-				{
-					self->rotz = atan2f( delta[1], delta[0] );
-					self->stateIndex = 1;
-					self->stateTime = 200;
-				}
-			}
-		}
-	}
-	else
-	if ( self->stateIndex == 1 )
-	{
-		moveSpeed *= 3.f;
-		self->stateTime -= 1.f;
-		if ( self->stateTime < 0.f )
-		{
-			self->stateIndex = 0;
-		}
-	}
-
-	self->animDir = 1.f;
-	if ( self->onGround )
-	{
-		self->vel[0] = moveSpeed*sinf(self->rotz)*dt;
-		self->vel[1] = moveSpeed*cosf(self->rotz)*dt;
-	}
-
-	animUpdate( self, "walk" );
-
-	move( self->pos, self->vel, map );
-#endif
-}
-
 bgfx::UniformHandle u_flash;
 bgfx::TextureHandle g_whiteTexture;
 bgfx::UniformHandle u_tex;
@@ -321,6 +85,8 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 
 
 	bgfx::init();
+	InitGraphics();
+
 	bgfx::reset(width, height, reset);
 
 	// Enable debug text.
@@ -338,6 +104,9 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 	CraftRecipeDefManager()->LoadGroup( "craft.rec" );
 	InventoryItemDefManager()->LoadGroup( "inventory.items" );
 	EntityDefManager()->Get( "level1.def" );
+	ShaderUniformDefManager()->LoadGroup( "shader_uniforms.sun" );
+	ShaderProgramDefManager()->LoadGroup( "shaders.shdr" );
+	MaterialDefManager()->LoadGroup( "materials.mtr" );
 
 	const bgfx::Memory *mapMem = load( "data/stbmap.vxl" );
 	map_s map;
@@ -380,25 +149,25 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 	const bgfx::Memory* mem;
 
 	// Load vertex shader.
-	mem = loadShader("vs_cubes");
-	bgfx::VertexShaderHandle vsh = bgfx::createVertexShader(mem);
+	//mem = loadShader("vs_cubes");
+	//bgfx::VertexShaderHandle vsh = bgfx::createVertexShader(mem);
 
 	// Load fragment shader.
-	mem = loadShader("fs_cubes");
-	u_flash = bgfx::createUniform("u_flash",     bgfx::UniformType::Uniform1f);
-	u_tex = bgfx::createUniform("u_tex", bgfx::UniformType::Uniform1i);
+	//mem = loadShader("fs_cubes");
+	//u_flash = bgfx::createUniform("u_flash",     bgfx::UniformType::Uniform1f);
+	//u_tex = bgfx::createUniform("u_tex", bgfx::UniformType::Uniform1i);
 
-	bgfx::FragmentShaderHandle fsh = bgfx::createFragmentShader(mem);
+	//bgfx::FragmentShaderHandle fsh = bgfx::createFragmentShader(mem);
 
 	// Create program from shaders.
-	bgfx::ProgramHandle program = bgfx::createProgram(vsh, fsh);
+	//bgfx::ProgramHandle program = bgfx::createProgram(vsh, fsh);
 
 	// We can destroy vertex and fragment shader here since
 	// their reference is kept inside bgfx after calling createProgram.
 	// Vertex and fragment shader will be destroyed once program is
 	// destroyed.
-	bgfx::destroyVertexShader(vsh);
-	bgfx::destroyFragmentShader(fsh);
+	//bgfx::destroyVertexShader(vsh);
+	//bgfx::destroyFragmentShader(fsh);
 
 
 	FILE* file = fopen("font/droidsans.ttf", "rb");
@@ -492,7 +261,7 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 			// Set model matrix for rendering.
 			bgfx::setTransform(mtx);
 			// Set vertex and fragment shaders.
-			bgfx::setProgram(program);
+			//bgfx::setProgram(program);
 
 			world.Render();
 
@@ -509,7 +278,7 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 	}
 
 	// Cleanup.
-	bgfx::destroyProgram(program);
+	//bgfx::destroyProgram(program);
 
 	// Shutdown bgfx.
 	bgfx::shutdown();
